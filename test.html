@@ -11,13 +11,27 @@
                 font-size: 20px;
             }
         </style>
+        <script>
+            function greetLena(){
+                let myStrongElement = document.getElementsByTagName('strong')[0];
+                let name = 'LENA';
+
+                for (let i = 0; i < name.length; i++){
+                    window.setTimeout(function(){
+                        myStrongElement.innerText += name[i];
+                    }, i*333);
+                }
+            }
+
+            window.setTimeout(greetLena, 1000);
+        </script>
     </head>
+    <body>
         <!-- Überschrift h1 bis h6 -->
         <h1>Hallo Welt</h1>
 
         <!-- Text p -->
-        <p>Hallo Lena <strong>lsdjgöslg</strong><br>
-            asdfaaaaaaaaaaaaaaaaaaaaaoasdfasdf</p>
+        <p>Hallo <strong></strong></p>
 
         <!-- Link a und ein Zeilenumbruch br -->
         <a href="https://wikipedia.de" target="_blank">asldfhaksfhkasdhf</a><br>
