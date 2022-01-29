@@ -1,22 +1,52 @@
 <!DOCTYPE html>
 <html style="background-color: rgb(197, 42, 218);">
     <head>
+        <title>Vokabel Trainer</title>
         <meta charset='utf-8'>
+
+        <script>
+            function getVokabeln(){
+                let vokabeln = {
+                    gehen: {grundform: "go", simplePast: "went"},
+                    bringen: {grundform: "bring", simplePast: "brought"},
+                };
+
+                return vokabeln;
+            }
+
+            function check(){
+                let lösungen = getVokabeln().gehen;
+
+                let deutsch = document.getElementById("deutsch");
+                let grundform = document.getElementById("grundform");
+                let simplePast = document.getElementById("simplePast");
+
+                console.log(deutsch.innerText);
+                console.log(grundform.value);
+                console.log(simplePast.value);
+
+                if (grundform.value == lösungen.grundform & simplePast.value == lösungen.simplePast) {
+                    alert(":) Super :)");
+                } else {
+                    alert("Möööööööööööööööööp");
+                }
+            }
+        </script>
     </head>
     <body>
+        <div>Vokabel: <span id="deutsch">gehen</span></div>
+
+        <br>
+
+        <label>Grundform: </label><input id="grundform"><br>
+
+        <br>
+
+        <label>simple past: </label><input id="simplePast"><br>
+
+        <br>
         
-        <br>
-        <br>
-        <br>
-        <label>Grundform: </label><input><button style="background-color: rgb(19, 190, 62);">ok</button>
-            
-        <br>
-        <br>
-
-        <label>simple past: </label><input><button style="background-color: rgb(19, 190, 62);">ok</button>
-
-
-
+        <button onclick="check()" style="background-color: rgb(19, 190, 62);">ok</button>
     </body>
 </html>
 

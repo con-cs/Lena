@@ -10,34 +10,11 @@
                 height: 200px;
                 font-size: 20px;
             }
+            pre{
+                word-break: break-all;
+                width: 100%;;                
+            }
         </style>
-        <script>
-            function registerEventHandler(){
-
-            }
-
-            function greetLena(){
-                let myStrongElement = document.getElementsByTagName('strong')[0];
-                let name = 'LENA';
-
-                for (let i = 0; i < name.length; i++){
-                    window.setTimeout(function(){
-                        myStrongElement.innerText += name[i];
-                    }, i*333);
-                }
-            }
-
-            function main(){
-                //console.log("Hallo Lena");
-                //alert("Hallo Lena");
-
-                //registerEventHandler();
-
-                //window.setTimeout(greetLena, 1000);
-            }
-
-            main();
-        </script>
     </head>
     <body>
         <!-- Überschrift h1 bis h6 -->
@@ -45,11 +22,47 @@
 
         <!-- Text p -->
         <p>Hallo <strong></strong></p>
-
+        <pre id="pups"></pre>
         <!-- Link a und ein Zeilenumbruch br -->
         <a href="https://wikipedia.de" target="_blank">asldfhaksfhkasdhf</a><br>
 
         <!-- Eingabe: input. Button: button. Beschriftung: label-->
         <label>Übersetze: </label><input><button>ok</button>
     </body>
+    <script>
+        function registerEventHandler(){
+            document.body.onkeydown = arrowPressed;
+        }
+
+        function arrowPressed(event){
+            console.log(event);
+            let buchstabe = event.key;
+            let ziel = document.getElementById("pups");
+            ziel.innerText += buchstabe;
+        }
+
+        function greetLena(){
+            let myStrongElement = document.getElementsByTagName('strong')[0];
+            let name = 'LENA';
+
+            for (let i = 0; i < name.length; i++){
+                window.setTimeout(function(){
+                    myStrongElement.innerText += name[i];
+                }, i*333);
+            }
+        }
+
+        function main(){
+            // alert("Hallo Lena");
+            // console.log("Moin Papa");
+            // console.error("'-'");
+            // console.warn("=)");
+            // console.debug("Ö");
+            // console.log("??", "!!");
+            registerEventHandler();
+            // window.setTimeout(greetLena, 1000);
+        }
+
+        main();
+    </script>
 </html>
