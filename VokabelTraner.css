@@ -18,7 +18,10 @@ img {
     border-radius: 5px;
     background-color: rgb(19, 190, 62);
     opacity: 0.9;
+    text-align: center;
+    line-height: 2em;
 }
 #okButton:hover {
     opacity: 1;
+    cursor: pointer;
 }
