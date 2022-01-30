@@ -3,6 +3,14 @@ html {
     background: linear-gradient(90deg, rgba(177,48,215,1) 15%, rgba(0,212,255,1) 100%);
 }
 
+body {
+    margin: 3em;
+    font-size: 2em;
+}
+input{
+    font-size: 1em;
+}
+
 img {
     height: 6em;
     width: 6em;
