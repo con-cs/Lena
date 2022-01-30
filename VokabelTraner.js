@@ -55,13 +55,13 @@ function richtigeAntwort(antwort){
 }
 
 function falscheAntwort(){
+    let sound = document.getElementById("falschSound");
+    sound.play();
+
     feedbackToUser("Möööööööööööööööööp");
 }
 
 function feedbackToUser(message){
-    let sound = document.getElementById("falschSound");
-    sound.play();
-
     alert(message);
 }
 //#endregion UserFeedback
