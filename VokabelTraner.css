@@ -13,8 +13,12 @@ img {
 #okButton {
     color: black;
     width: 6em;
-    height: 3em;
+    height: 2em;
     border: 1px solid grey;
     border-radius: 5px;
     background-color: rgb(19, 190, 62);
+    opacity: 0.9;
+}
+#okButton:hover {
+    opacity: 1;
 }
