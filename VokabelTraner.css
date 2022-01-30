@@ -1,0 +1,11 @@
+html {
+    background: rgb(177,48,215);
+    background: linear-gradient(90deg, rgba(177,48,215,1) 15%, rgba(0,212,255,1) 100%);
+}
+
+img {
+    height: 6em;
+    width: 6em;
+    position: absolute;
+    filter: invert(100%);  /*drop-shadow(8px 9px 4px black);*/
+}
