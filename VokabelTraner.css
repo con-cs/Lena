@@ -9,3 +9,12 @@ img {
     position: absolute;
     filter: invert(100%);  /*drop-shadow(8px 9px 4px black);*/
 }
+
+#okButton {
+    color: black;
+    width: 6em;
+    height: 3em;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: rgb(19, 190, 62);
+}
