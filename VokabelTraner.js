@@ -33,24 +33,44 @@ function getSimplePastElement(){
 
 //#region LOGIC
 function check(){
-    let deutsch = getDeutschElement();
-    let grundform = getGrundformElement();
-    let simplePast = getSimplePastElement();
+    let deutsch = getDeutschElement().innerText;
+    let grundform = getGrundformElement().value;
+    let simplePast = getSimplePastElement().value;
 
-    console.log(deutsch.innerText);
-    console.log(grundform.value);
-    console.log(simplePast.value);
+    console.log(deutsch);
+    console.log(grundform);
+    console.log(simplePast);
 
-    let lösung = getVokabeln()[deutsch.innerText];
-    if (grundform.value == lösung.grundform & simplePast.value == lösung.simplePast) {
-        alert(":) Super :)");
-        setRandomVocabulary();
-        housekeeping();
+    let lösung = vokabelListe[deutsch];
+    if (grundform == lösung.grundform & simplePast == lösung.simplePast) {
+        richtigeAntwort(deutsch);
     } else {
-        alert("Möööööööööööööööööp");
+        falscheAntwort();
     }
 }
+
+function richtigeAntwort(antwort){
+    feedbackToUser(":) Super :)");
+
+    // delete this answer in backend. not to get it twice ;)
+    delete vokabelListe[antwort];
+
+    // set new vocabulary in frontend ..
+    setRandomVocabulary();
+    // .. and clean the input fields
+    housekeeping();
+}
+
+function falscheAntwort(){
+    feedbackToUser("Möööööööööööööööööp");
+}
 //#endregion LOGIC
+
+//#region UserFeedback
+function feedbackToUser(message){
+    alert(message);
+}
+//#endregion UserFeedback
 
 //#region SETTER
 function housekeeping(){
@@ -59,16 +79,20 @@ function housekeeping(){
 }
 
 function setRandomVocabulary(){
-    let vokabeln = getVokabeln();
-    let vokabelListe = Object.keys(vokabeln);
+    let vokabeln = Object.keys(vokabelListe);
     let randomZahl = Math.floor(Math.random() * 2);
 
-    getDeutschElement().innerText = vokabelListe[randomZahl];
+    getDeutschElement().innerText = vokabeln[randomZahl];
+}
+
+function vokabelListeVorbereiten(){
+    window.vokabelListe = getVokabeln();
 }
 //#endregion SETTER
 
 //#region MAIN
 function main(){
+    vokabelListeVorbereiten();
     setRandomVocabulary();
 }
 //#endregion MAIN
