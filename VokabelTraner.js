@@ -87,7 +87,7 @@ function housekeeping(){
 
 function setRandomVocabulary(){
     let vokabeln = Object.keys(vokabelListe);
-    let randomZahl = Math.floor(Math.random() * 2);
+    let randomZahl = Math.floor(Math.random() * vokabeln.length);
 
     getDeutschElement().innerText = vokabeln[randomZahl];
 }
