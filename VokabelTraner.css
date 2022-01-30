@@ -4,11 +4,20 @@ html {
 }
 
 body {
-    margin: 3em;
+    margin: 1em;
     font-size: 2em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-input{
+
+input, #deutsch{
+    padding: 0.3em 0.5em;
     font-size: 1em;
+    border-radius: 2em;
+    margin-left: 0.5em;
+}
+
+#deutsch{
+    background-color: rgba(255,255,255,0.3);
 }
 
 img {
@@ -16,7 +25,20 @@ img {
     width: 6em;
     position: absolute;
     filter: invert(100%);  /*drop-shadow(8px 9px 4px black);*/
+    bottom: 10%;
+    left: 2em;
 }
+
+#container_inner{
+    width: fit-content;
+}
+
+.inputContainer{
+    max-width: 100%;
+    padding: auto;
+    margin-bottom: 1em;
+}
+
 
 #okButton {
     color: black;
@@ -28,6 +50,7 @@ img {
     opacity: 0.9;
     text-align: center;
     line-height: 2em;
+    float: right;
 }
 #okButton:hover {
     opacity: 1;
