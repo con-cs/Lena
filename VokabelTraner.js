@@ -2,6 +2,16 @@ function getVokabeln(){
     let vokabeln = {
         gehen: {grundform: "go", simplePast: "went"},
         bringen: {grundform: "bring", simplePast: "brought"},
+        fangen: {grundform: "catch", simplePast: "caught"},
+        "aussuchen, (aus)wählen": {grundform: "choose", simplePast: "chose"},
+        "machen; herstellen": {grundform: "make", simplePast: "made"},
+        sagen: {grundform: "say", simplePast: "said"},
+        : {grundform: "", simplePast: ""},
+        : {grundform: "", simplePast: ""},
+        : {grundform: "", simplePast: ""},
+        : {grundform: "", simplePast: ""},
+        : {grundform: "", simplePast: ""},
+        : {grundform: "", simplePast: ""},
     };
 
     return vokabeln;
