@@ -1,3 +1,4 @@
+//#region GETTER
 function getVokabeln(){
     let vokabeln = {
         gehen: {grundform: "go", simplePast: "went"},
@@ -28,7 +29,9 @@ function getGrundformElement(){
 function getSimplePastElement(){
     return document.getElementById("simplePast");
 }
+//#endregion GETTER
 
+//#region LOGIC
 function check(){
     let deutsch = getDeutschElement();
     let grundform = getGrundformElement();
@@ -47,7 +50,9 @@ function check(){
         alert("Möööööööööööööööööp");
     }
 }
+//#endregion LOGIC
 
+//#region SETTER
 function housekeeping(){
     getGrundformElement().value = "";
     getSimplePastElement().value = "";
@@ -60,7 +65,10 @@ function setRandomVocabulary(){
 
     getDeutschElement().innerText = vokabelListe[randomZahl];
 }
+//#endregion SETTER
 
+//#region MAIN
 function main(){
     setRandomVocabulary();
 }
+//#endregion MAIN
