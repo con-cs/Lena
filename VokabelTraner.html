@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Vokabel Trainer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset='utf-8'>
+
+        <title>Vokabel Trainer</title>
 
         <link rel="stylesheet" href="VokabelTraner.css">
         <script src="VokabelTraner.js"></script>
@@ -10,11 +12,11 @@
     <body>
         <div>Vokabel: <span id="deutsch">gehen</span></div>
         <br>
-        <label>Grundform: </label><input id="grundform"><br>
+        <label>Grundform: </label>to <input id="grundform"><br>
         <br>
         <label>simple past: </label><input id="simplePast"><br>
         <br>
-        <button onclick="check()" style="background-color: rgb(19, 190, 62);">ok</button>
+        <div id="okButton" onclick="check()">ok</div>
         <img src="img/star-regular.svg"/>
     </body>
     <script>
