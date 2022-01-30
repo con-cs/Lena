@@ -1,30 +1,4 @@
 //#region GETTER
-function getVokabeln(){
-    let vokabeln = {
-        gehen: {grundform: "go", simplePast: "went"},
-        bringen: {grundform: "bring", simplePast: "brought"},
-        fangen: {grundform: "catch", simplePast: "caught"},
-        "aussuchen, (aus)wählen": {grundform: "choose", simplePast: "chose"},
-        "machen; herstellen": {grundform: "make", simplePast: "made"},
-        sagen: {grundform: "say", simplePast: "said"},
-        sehen: {grundform: "see", simplePast: "saw"},
-        "sitzen; sich setzen": {grundform: "sit", simplePast: "sat"},
-        schwimmen: {grundform: "swim", simplePast: "swam"},
-        "nehmen; bringen": {grundform: "take", simplePast: "took"},
-        "denken, glauben": {grundform: "think", simplePast: "thought"},
-        schreiben: {grundform: "write", simplePast: "wrote"},
-        kommen: {grundform: "come", simplePast: "came"},
-        "tun, machen": {grundform: "do", simplePast: "did"},
-        fallen: {grundform: "fall", simplePast: "fell"},
-        "fühlen; sich fühlen": {grundform: "feel", simplePast: "felt"},
-        "bekommen; werden; gelangen, (hin)kommen": {grundform: "get", simplePast: "got"},
-        haben: {grundform: "have", simplePast: "had"},
-        // : {grundform: "", simplePast: ""},
-    };
-
-    return vokabeln;
-}
-
 function getDeutschElement(){
     return document.getElementById("deutsch");
 }
@@ -35,6 +9,13 @@ function getGrundformElement(){
 
 function getSimplePastElement(){
     return document.getElementById("simplePast");
+}
+
+function getCounterElements(){
+    return {
+        verbraucht: document.getElementById("verbraucht"),
+        gesamt: document.getElementById("gesamtzahl")
+    };
 }
 //#endregion GETTER
 
@@ -55,12 +36,17 @@ function check(){
         falscheAntwort();
     }
 }
+//#endregion LOGIC
 
+//#region UserFeedback
 function richtigeAntwort(antwort){
     feedbackToUser(":) Super :)");
 
     // delete this answer in backend. not to get it twice ;)
     delete vokabelListe[antwort];
+
+    let bisherigeAntworten = getCounterElements().verbraucht.innerText;
+    getCounterElements().verbraucht.innerText = parseInt(bisherigeAntworten) + 1;
 
     // set new vocabulary in frontend ..
     setRandomVocabulary();
@@ -71,10 +57,11 @@ function richtigeAntwort(antwort){
 function falscheAntwort(){
     feedbackToUser("Möööööööööööööööööp");
 }
-//#endregion LOGIC
 
-//#region UserFeedback
 function feedbackToUser(message){
+    let sound = document.getElementById("falschSound");
+    sound.play();
+
     alert(message);
 }
 //#endregion UserFeedback
@@ -93,7 +80,11 @@ function setRandomVocabulary(){
 }
 
 function vokabelListeVorbereiten(){
+    housekeeping();
+
     window.vokabelListe = getVokabeln();
+    getCounterElements().gesamt.innerText = Object.keys(window.vokabelListe).length;
+    getCounterElements().verbraucht.innerText = "0";
 }
 //#endregion SETTER
 

@@ -7,21 +7,30 @@
         <title>Vokabel Trainer</title>
 
         <link rel="stylesheet" href="VokabelTraner.css">
+        <script src="VokabelListe.js"></script>
         <script src="VokabelTraner.js"></script>
     </head>
     <body>
-        <div>Vokabel: <span id="deutsch">gehen</span></div>
-        <br>
-        <div id="container_inner">
-            <div class="inputContainer">
-                <label>Grundform: </label><input id="grundform">
+        <div id="vokabelContainer">
+            <div>Vokabel: <span id="deutsch">gehen</span></div>
+            <br>
+            <div id="container_inner">
+                <div class="inputContainer">
+                    <label>Grundform: </label><input id="grundform" autocapitalize="none" />
+                </div>
+                <div class="inputContainer">
+                    <label>simple past: </label><input id="simplePast" autocapitalize="none" />
+                </div>
+                <div id="okButton" onclick="check()">ok</div>
             </div>
-            <div class="inputContainer">
-                <label>simple past: </label><input id="simplePast">
-            </div>
-            <div id="okButton" onclick="check()">ok</div>
+        </div>
+        <div id="auswertungContainer">
+            <div id="auswertung"><span id="verbraucht">0</span> / <span id="gesamtzahl">0</span></div>
         </div>
         <img src="img/star-regular.svg"/>
+        <audio id="falschSound">
+            <source src="sound/meep.ogg" type="audio/ogg">
+        </audio>
     </body>
     <script>
         main();
