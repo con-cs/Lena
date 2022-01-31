@@ -61,8 +61,42 @@ img {
     width: 6em;
     position: absolute;
     filter: invert(100%);  /*drop-shadow(8px 9px 4px black);*/
-    bottom: 10%;
-    left: 2em;
+}
+
+#star1{
+    top: 5em;
+    right: 12em;
+    transform: rotate(14deg);
+}
+
+#star2{
+    top: 28em;
+    right: 24em;
+    transform: rotate(43deg);
+}
+
+#star3{
+    top: 18em;
+    right: 35em;
+    transform: rotate(18deg);
+}
+
+#star4{
+    top: 17em;
+    right: 18em;
+    transform: rotate(26deg);
+}
+
+#star5{
+    top: 33em;
+    right: 8em;
+    transform: rotate(17deg);
+}
+
+#star6{
+    top: 0em;
+    right: 0em;
+    transform: rotate(0deg);
 }
 
 #container_inner{
