@@ -62,14 +62,16 @@ function falscheAntwort(){
 }
 
 function feedbackToUser(message){
-    alert(message);
+    //alert(message);
 }
 //#endregion UserFeedback
 
 //#region SETTER
 function housekeeping(){
-    getGrundformElement().value = "";
     getSimplePastElement().value = "";
+    getGrundformElement().value = "";
+    getGrundformElement().focus();
+    getGrundformElement().select();
 }
 
 function setRandomVocabulary(){
@@ -88,9 +90,47 @@ function vokabelListeVorbereiten(){
 }
 //#endregion SETTER
 
+//#region EventHandler
+function setEventHandler(){
+    let allInputs = document.getElementsByTagName('input');
+    for (input of allInputs){
+        input.onkeydown = inputKeyDown;
+    }
+}
+
+function inputKeyDown(e){
+    if (e.key == "Enter") inputKeyEnter();
+}
+
+function inputKeyEnter(){
+    let textInGrundform = checkTextInElement( getGrundformElement() );
+    if (!textInGrundform) return;
+
+    let textInSimplePast = checkTextInElement( getSimplePastElement() );
+    if (!textInSimplePast) return;
+
+    check();
+}
+
+function checkTextInElement(element){
+    if (element.value.length === 0){
+        setCursorToElement(element);
+        return false;
+    }
+
+    return true;
+}
+
+function setCursorToElement(element){
+    element.focus();
+    element.select();
+}
+//#endregion EventHandler
+
 //#region MAIN
 function main(){
     vokabelListeVorbereiten();
     setRandomVocabulary();
+    setEventHandler();
 }
 //#endregion MAIN
