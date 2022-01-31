@@ -45,13 +45,18 @@ function richtigeAntwort(antwort){
     // delete this answer in backend. not to get it twice ;)
     delete vokabelListe[antwort];
 
-    let bisherigeAntworten = getCounterElements().verbraucht.innerText;
-    getCounterElements().verbraucht.innerText = parseInt(bisherigeAntworten) + 1;
+    document.getElementById("auswertungContainer").className="box bounce-7";
 
-    // set new vocabulary in frontend ..
-    setRandomVocabulary();
-    // .. and clean the input fields
-    housekeeping();
+    let bisherigeAntworten = getCounterElements().verbraucht.innerText;
+    window.setTimeout(function(){
+        getCounterElements().verbraucht.innerText = parseInt(bisherigeAntworten) + 1;
+
+        // set new vocabulary in frontend ..
+        setRandomVocabulary();
+
+        // .. and clean the input fields
+        housekeeping();
+    }, 250);
 }
 
 function falscheAntwort(){
@@ -70,8 +75,11 @@ function feedbackToUser(message){
 function housekeeping(){
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
+
     getGrundformElement().focus();
     getGrundformElement().select();
+
+    document.getElementById("auswertungContainer").className="";
 }
 
 function setRandomVocabulary(){

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+#dot{
+    position: absolute;
+    top: 13em;
+    left: 3em;
+    height: 2em;
+    width: 2em;
+    border-radius: 1em;
+    background-color: aqua;
+}
+    </style>
+</head>
+<body>
+    <div id="dot"></div>
+</body>
+<script>
+    var ball = document.getElementById('dot');
+    var h = 575; // x vertex, half of total bounce duration
+    var k = 160; // y vertex, total bounce height
+    var a = -4 * k / Math.pow(h * 2, 2); // coefficient: -.000483932
+    var xpos, ypos, start, time;
+
+    (function drawPosition(timestamp) {
+    if (!start) { start = timestamp };
+    time = timestamp - start;
+
+    // Position as a function of time, using the vertex form
+    // of the quadratic formula:  f(x) = a(x - h)^2 + k,
+    // (where [h, k] is the vertex). See it graphically at:
+    //    https://www.desmos.com/calculator/i6yunccp7v
+    ypos = a * Math.pow(((time + h) % (h * 2) - h), 2) + k;
+    xpos = a * (time + h);
+
+    ball.style.transform = 'translate(' + -xpos + 'px ,' + -ypos + 'px)';
+    window.requestAnimationFrame(drawPosition);
+    })(performance.now());
+</script>
+</html>
