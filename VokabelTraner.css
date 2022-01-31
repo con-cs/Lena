@@ -75,7 +75,6 @@ img {
     margin-bottom: 1em;
 }
 
-
 #okButton {
     color: black;
     width: 6em;
@@ -95,12 +94,15 @@ img {
 
 #auswertungContainer {
     display: flex;
-    margin: 0 2em;
+    margin: 3em 2em;
     background: rgba(255,255,255,0.3);
-    line-height: 2em;
+    line-height: 4em;
     padding: 1em;
-    height: 2em;
-    border-radius: 0.3em;
+    height: 3em;
+    border-radius: 0 0 0.3em 0.3em;
+    border: 3px solid black;
+    border-top: 0;
+    box-shadow: 0 0 7px;
 }
 
 #auswertung {
