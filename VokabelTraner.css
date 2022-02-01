@@ -63,12 +63,12 @@ img {
     filter: invert(100%);  /*drop-shadow(8px 9px 4px black);*/
 }
 
-#star1{ top: 25em; right: 12em; /*transform: rotateZ(14deg);*/}
-#star2{ top: 28em; right: 24em; /*transform: rotateZ(43deg);*/}
-#star3{ top: 18em; right: 35em; /*transform: rotateZ(18deg);*/}
-#star4{ top: 17em; right: 18em; /*transform: rotateZ(26deg);*/}
-#star5{ top: 33em; right:  8em; /*transform: rotateZ(17deg);*/}
-#star6{ top:  0em; right:  0em; /*transform: rotateZ(0deg);*/}
+#star1{ top: 25em; right: 12em; transform: rotateZ(14deg);}
+#star2{ top: 28em; right: 24em; transform: rotateZ(43deg);}
+#star3{ top: 18em; right: 35em; transform: rotateZ(18deg);}
+#star4{ top: 17em; right: 18em; transform: rotateZ(26deg);}
+#star5{ top: 33em; right:  8em; transform: rotateZ(17deg);}
+#star6{ top:  0em; right:  0em; transform: rotateZ(0deg);}
 
 #container_inner{
     width: fit-content;

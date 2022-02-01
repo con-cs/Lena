@@ -58,12 +58,13 @@ function richtigeAntwort(antwort){
                 window.setTimeout(function(){
                     // hide the ball in the box
                     $('#deutsch').fadeOut();
+                    getCounterElements().verbraucht.innerText = gegebeneAntworten;
+
                     if (alleAntworten == gegebeneAntworten) {
                         allDone();
                         return;
                     }
 
-                    getCounterElements().verbraucht.innerText = gegebeneAntworten;
                     window.setTimeout(function(){
                         // animation end
                         // set new vocabulary in frontend ..
@@ -71,8 +72,8 @@ function richtigeAntwort(antwort){
                         // .. and clean the input fields
                         housekeeping();
                     }, 550);
-                }, 300);
-            }, 400);
+                }, 200);
+            }, 500);
             // Animation complete.
         }
     );
@@ -84,10 +85,10 @@ function falscheAntwort(){
 }
 
 function allDone(){
-    $('img').addClass("spin");
-    window.setTimeout(function(){
-        $('img').remveClass("spin");
-    }, 2000);
+    // $('img').addClass("spin");
+    // window.setTimeout(function(){
+    //     $('img').remveClass("spin");
+    // }, 2000);
 
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
@@ -95,8 +96,36 @@ function allDone(){
     feedbackToUser(":) Super :)");
 }
 
+function restart(){
+    vokabelListeVorbereiten();
+    setRandomVocabulary();
+}
+
+function confettiNow(){
+    let end = Date.now() + (3 * 1000);
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+      });
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    }());
+}
+
 function feedbackToUser(message){
     alert(message);
+    confettiNow();
 }
 //#endregion UserFeedback
 
@@ -123,11 +152,14 @@ function setRandomVocabulary(){
     getDeutschElement().innerText = vokabeln[randomZahl];
 }
 
-function vokabelListeVorbereiten(){
-    housekeeping();
-
+function vokabelListeVorbereiten(max){
     window.vokabelListe = getVokabeln();
-    getCounterElements().gesamt.innerText = Object.keys(window.vokabelListe).length;
+
+    housekeeping();
+    if (!max) max = 10;
+    let all = Object.keys(window.vokabelListe).length;
+
+    getCounterElements().gesamt.innerText =  all < max ? all : max;
     getCounterElements().verbraucht.innerText = "0";
 }
 //#endregion SETTER
