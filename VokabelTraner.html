@@ -7,12 +7,13 @@
         <title>Vokabel Trainer</title>
 
         <link rel="stylesheet" href="VokabelTraner.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="VokabelListe.js"></script>
         <script src="VokabelTraner.js"></script>
     </head>
     <body>
         <div id="vokabelContainer">
-            <div>Vokabel: <span id="deutsch">gehen</span></div>
+            <div style="height: 1.5em;"><span style="line-height: 2em;">Vokabel: </span><span id="deutsch">gehen</span></div>
             <br>
             <div style="display: flex;">
                 <div style="display: flex;">
@@ -42,6 +43,7 @@
         <audio id="falschSound">
             <source src="sound/meep.ogg" type="audio/ogg">
         </audio>
+        <div id="motionBall" class=""></div>
     </body>
     <script>
         main();

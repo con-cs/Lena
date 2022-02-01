@@ -40,34 +40,63 @@ function check(){
 
 //#region UserFeedback
 function richtigeAntwort(antwort){
-    feedbackToUser(":) Super :)");
-
     // delete this answer in backend. not to get it twice ;)
     delete vokabelListe[antwort];
 
-    document.getElementById("auswertungContainer").className="box bounce-7";
+    let alleAntworten = parseInt(getCounterElements().gesamt.innerText);
+    let gegebeneAntworten = parseInt(getCounterElements().verbraucht.innerText);
+    gegebeneAntworten++;
 
-    let bisherigeAntworten = getCounterElements().verbraucht.innerText;
-    window.setTimeout(function(){
-        getCounterElements().verbraucht.innerText = parseInt(bisherigeAntworten) + 1;
+    $("#deutsch")
+        .css({overflow: "hidden"})
+        .animate({width: "1em", height: "1em"}, 200, function() {
+            // animate rolling to the box - animation duration 600ms
+            $('#deutsch').addClass('motionBall');
+            window.setTimeout(function(){
+                // start shaking the box - animation duration 600 ms
+                $("#auswertungContainer").addClass("bounce-7");
+                window.setTimeout(function(){
+                    // hide the ball in the box
+                    $('#deutsch').fadeOut();
+                    if (alleAntworten == gegebeneAntworten) {
+                        allDone();
+                        return;
+                    }
 
-        // set new vocabulary in frontend ..
-        setRandomVocabulary();
-
-        // .. and clean the input fields
-        housekeeping();
-    }, 250);
+                    getCounterElements().verbraucht.innerText = gegebeneAntworten;
+                    window.setTimeout(function(){
+                        // animation end
+                        // set new vocabulary in frontend ..
+                        setRandomVocabulary();
+                        // .. and clean the input fields
+                        housekeeping();
+                    }, 550);
+                }, 300);
+            }, 400);
+            // Animation complete.
+        }
+    );
 }
 
 function falscheAntwort(){
     let sound = document.getElementById("falschSound");
     sound.play();
+}
 
-    feedbackToUser("Möööööööööööööööööp");
+function allDone(){
+    $('img').addClass("spin");
+    window.setTimeout(function(){
+        $('img').remveClass("spin");
+    }, 2000);
+
+    getSimplePastElement().value = "";
+    getGrundformElement().value = "";
+
+    feedbackToUser(":) Super :)");
 }
 
 function feedbackToUser(message){
-    //alert(message);
+    alert(message);
 }
 //#endregion UserFeedback
 
@@ -79,7 +108,12 @@ function housekeeping(){
     getGrundformElement().focus();
     getGrundformElement().select();
 
-    document.getElementById("auswertungContainer").className="";
+    document.getElementById("auswertungContainer").className = "";
+    document.getElementById("deutsch").className = "";
+    document.getElementById("deutsch").style.overflow = "auto";
+    document.getElementById("deutsch").style.width = "";
+    document.getElementById("deutsch").style.height = "";
+    document.getElementById("deutsch").style.display = "inline-block";
 }
 
 function setRandomVocabulary(){

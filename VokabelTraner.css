@@ -48,6 +48,7 @@ input, #deutsch{
     font-size: 1em;
     border-radius: 2em;
     margin-left: 0.5em;
+    margin-bottom: -0.5em;
 }
 
 #deutsch{
@@ -62,41 +63,12 @@ img {
     filter: invert(100%);  /*drop-shadow(8px 9px 4px black);*/
 }
 
-#star1{
-    top: 25em;
-    right: 12em;
-    transform: rotate(14deg);
-}
-
-#star2{
-    top: 28em;
-    right: 24em;
-    transform: rotate(43deg);
-}
-
-#star3{
-    top: 18em;
-    right: 35em;
-    transform: rotate(18deg);
-}
-
-#star4{
-    top: 17em;
-    right: 18em;
-    transform: rotate(26deg);
-}
-
-#star5{
-    top: 33em;
-    right: 8em;
-    transform: rotate(17deg);
-}
-
-#star6{
-    top: 0em;
-    right: 0em;
-    transform: rotate(0deg);
-}
+#star1{ top: 25em; right: 12em; /*transform: rotateZ(14deg);*/}
+#star2{ top: 28em; right: 24em; /*transform: rotateZ(43deg);*/}
+#star3{ top: 18em; right: 35em; /*transform: rotateZ(18deg);*/}
+#star4{ top: 17em; right: 18em; /*transform: rotateZ(26deg);*/}
+#star5{ top: 33em; right:  8em; /*transform: rotateZ(17deg);*/}
+#star6{ top:  0em; right:  0em; /*transform: rotateZ(0deg);*/}
 
 #container_inner{
     width: fit-content;
@@ -146,12 +118,10 @@ img {
 
 
 
-.box {
-    animation-duration: 1s;
+.bounce-7 {
+    animation-duration: 600ms;
     animation-iteration-count: 1;
     transform-origin: bottom;
-}
-.bounce-7 {
     animation-name: bounce-7;
     animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
 }
@@ -163,4 +133,38 @@ img {
     57%  { transform: scale(1,1)      translateY(-7px); }
     64%  { transform: scale(1,1)      translateY(0); }
     100% { transform: scale(1,1)      translateY(0); }
+}
+.motionBall {
+    offset-path: path('M57,9 C42,9 369,8 384,9 C439,11 441,29 450,99');
+    animation: move 600ms 1 alternate ease-in-out;
+    width: 2em;
+    height: 2em;
+    background: cyan;
+    border-radius: 1em;
+    animation-fill-mode: forwards;
+  }
+  @keyframes move {
+    0% {
+      offset-distance: 0%;
+    }
+    100% {
+      offset-distance: 100%;
+    }
+  }
+.spin{
+  -webkit-animation:spin 300ms 5 linear;
+  -moz-animation:spin 300ms 5 linear;
+  animation:spin 300ms 5 linear;
+}
+@-moz-keyframes spin {
+  100% { -moz-transform: rotate3d(1, 1, 1, 360deg); }
+}
+@-webkit-keyframes spin {
+  100% { -webkit-transform: rotate3d(1, 1, 1, 360deg); }
+}
+@keyframes spin {
+  100% {
+      -webkit-transform: rotate3d(1, 1, 1, 360deg);
+      transform: rotate3d(1, 1, 1, 360deg);
+  }
 }
