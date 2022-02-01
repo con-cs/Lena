@@ -30,7 +30,7 @@ function check(){
     console.log(simplePast);
 
     let lösung = vokabelListe[deutsch];
-    if (grundform == lösung.grundform & simplePast == lösung.simplePast) {
+    if (grundform == lösung.grundform & simplePast == lösung.simplepast) {
         richtigeAntwort(deutsch);
     } else {
         falscheAntwort();
@@ -202,9 +202,50 @@ function setCursorToElement(element){
 //#endregion EventHandler
 
 //#region MAIN
+function getVokabeln(){
+    if (window.vokabelListe) return window.vokabelListe;
+
+    let data = window.vokabelListe_raw;
+    let vokabelListe = {};
+    let position, header, properties;
+    let identifierAttribute = "deutsch";
+
+    data.forEach(entry => {
+        if (!header){
+            // first row, init variables
+            header = entry.map(a => a.toLowerCase());
+            properties = header.filter(a => a !== identifierAttribute.toLowerCase());
+            position = {};
+            header.forEach((element, index) => position[element] = index);
+        } else {
+            let key = entry[position[identifierAttribute]];
+            if (key) {
+                vokabelListe[key] = {};
+                properties.forEach(property => vokabelListe[key][property] = entry[position[property]]);
+            }
+        }
+    });
+
+    return vokabelListe;
+}
+
+function getCSVData(){
+    $.ajax({
+        type: "GET",
+        url: "https://schulte-page.de/Vokabeltrainer/vokabeln.csv",
+        dataType: "text",
+        success: function(data) {
+            var results = Papa.parse(data);
+            window.vokabelListe_raw = results.data;
+            console.log(results);
+
+            restart();
+        }
+    });
+}
+
 function main(){
-    vokabelListeVorbereiten();
-    setRandomVocabulary();
+    getCSVData();
     setEventHandler();
 }
 //#endregion MAIN

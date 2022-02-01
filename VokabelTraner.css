@@ -54,6 +54,7 @@ input, #deutsch{
 #deutsch{
     background-color: rgba(255,255,255,0.3);
     display: inline-block;
+    margin-bottom: -0.5em;
 }
 
 img {
@@ -80,7 +81,6 @@ img {
     margin-bottom: 1em;
 }
 
-
 #okButton {
     color: black;
     width: 6em;
@@ -102,12 +102,67 @@ img {
     display: flex;
     margin: 0 2em;
     background: rgba(255,255,255,0.3);
-    line-height: 2em;
+    line-height: 4em;
     padding: 1em;
-    height: 2em;
-    border-radius: 0.3em;
+    height: 3em;
+    border-radius: 0 0 0.3em 0.3em;
+    border: 3px solid black;
+    border-top: 0;
+    box-shadow: 0 0 7px;
 }
 
 #auswertung {
     width: max-content;
 }
+
+.bounce-7 {
+    animation-duration: 600ms;
+    animation-iteration-count: 1;
+    transform-origin: bottom;
+    animation-name: bounce-7;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+@keyframes bounce-7 {
+    0%   { transform: scale(1,1)      translateY(0); }
+    10%  { transform: scale(1.1,.9)   translateY(0); }
+    30%  { transform: scale(.9,1.1)   translateY(-20px); }
+    50%  { transform: scale(1.05,.95) translateY(0); }
+    57%  { transform: scale(1,1)      translateY(-7px); }
+    64%  { transform: scale(1,1)      translateY(0); }
+    100% { transform: scale(1,1)      translateY(0); }
+}
+
+.motionBall {
+    offset-path: path('M57,9 C42,9 369,8 384,9 C489,11 491,29 500,99');
+    animation: move 600ms 1 alternate ease-in-out;
+    width: 2em;
+    height: 2em;
+    background: cyan;
+    border-radius: 1em;
+    animation-fill-mode: forwards;
+  }
+  @keyframes move {
+    0% {
+      offset-distance: 0%;
+    }
+    100% {
+      offset-distance: 100%;
+    }
+  }
+.spin{
+  -webkit-animation:spin 300ms 5 linear;
+  -moz-animation:spin 300ms 5 linear;
+  animation:spin 300ms 5 linear;
+}
+@-moz-keyframes spin {
+  100% { -moz-transform: rotate3d(1, 1, 1, 360deg); }
+}
+@-webkit-keyframes spin {
+    100% { -webkit-transform: rotate3d(1, 1, 1, 360deg); }
+  }
+  @keyframes spin {
+    100% {
+        -webkit-transform: rotate3d(1, 1, 1, 360deg);
+        transform: rotate3d(1, 1, 1, 360deg);
+    }
+  }
