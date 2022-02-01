@@ -23,7 +23,7 @@ function getVokabeln(){
         sprechen: {grundform: "speak", simplePast: "spoke"},
         verstehen: {grundform: "understand", simplePast: "understood"},
         "tragen (Kleidung)": {grundform: "wear", simplePast: "wore"},
-        
+
         //A,B,C,...
         sein: {grundform: "be", simplePast: "was, were"},
         werden: {grundform: "become", simplePast: "became"},
@@ -65,15 +65,8 @@ function getVokabeln(){
         "verlassen; zutücklassen" : {grundform: "leave", simplePast: "left"},
         lassen: {grundform: "let", simplePast: "let"},
         liegen: {grundform: "lie", simplePast: "lay"},
-        : {grundform: "", simplePast: ""},
-        : {grundform: "", simplePast: ""},
-        : {grundform: "", simplePast: ""},
-        : {grundform: "", simplePast: ""},
-        : {grundform: "", simplePast: ""},
-        : {grundform: "", simplePast: ""},
-        : {grundform: "", simplePast: ""},
         // : {grundform: "", simplePast: ""},
     };
-    
+
     return vokabeln;
 }
