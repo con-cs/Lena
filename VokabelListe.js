@@ -40,7 +40,7 @@ function getVokabeln(){
         halten: {grundform: "hold", simplePast: "held"},
         "schmerzen, wehtun; verletzen": {grundform: "hurt", simplePast: "hurt"},
         "wissen; kennen": {grundform: "know", simplePast: "knew"},
-        "verlassen; zutücklassen" : {grundform: "leave", simplePast: "left"},
+        "verlassen; zurücklassen" : {grundform: "leave", simplePast: "left"},
         lassen: {grundform: "let", simplePast: "let"},
         liegen: {grundform: "lie", simplePast: "lay"},
         anzünden: {grundform: "light", simplePast: "lit"},
