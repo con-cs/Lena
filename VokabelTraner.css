@@ -94,9 +94,23 @@ img {
     line-height: 2em;
     float: right;
 }
+#okButton:after {
+    content: "ok";
+}
 #okButton:hover {
     opacity: 1;
     cursor: pointer;
+}
+.restartButton{
+    background-color:rgb(19, 87, 190) !important;
+    color: white !important;
+    opacity: 0.7 !important;
+}
+.restartButton:after {
+    content: "Nochmal" !important;
+}
+.restartButton:hover {
+    opacity: 1 !important;
 }
 
 #auswertungContainer {
