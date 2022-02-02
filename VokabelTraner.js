@@ -37,7 +37,7 @@ function check(){
     let lösung = vokabelListe[deutsch];
     console.log(lösung);
 
-    if (grundform == lösung.grundform & (simplePast == lösung.simplePast || simplePast == lösung.simplepast)) {
+    if (grundform == lösung.grundform & (simplePast == lösung.simplepast)) {
         richtigeAntwort(deutsch);
     } else {
         falscheAntwort();
