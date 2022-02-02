@@ -30,7 +30,7 @@ function check(){
     console.log(simplePast);
 
     let lösung = vokabelListe[deutsch];
-    if (grundform == lösung.grundform & simplePast == lösung.simplepast) {
+    if (grundform == lösung.grundform & (simplePast == lösung.simplePast || simplePast == lösung.simplepast)) {
         richtigeAntwort(deutsch);
     } else {
         falscheAntwort();
@@ -51,7 +51,9 @@ function richtigeAntwort(antwort){
         .css({overflow: "hidden"})
         .animate({width: "1em", height: "1em"}, 200, function() {
             // animate rolling to the box - animation duration 600ms
-            $('#deutsch').addClass('motionBall');
+            setOffsetPath();
+
+            $('#deutsch').addClass('motionBall motionBallOffsetPath');
             window.setTimeout(function(){
                 // start shaking the box - animation duration 600 ms
                 $("#auswertungContainer").addClass("bounce-7");
@@ -130,6 +132,20 @@ function feedbackToUser(message){
 //#endregion UserFeedback
 
 //#region SETTER
+function setOffsetPath(){
+    let source = document.getElementById('deutsch');
+    let target = document.getElementById('auswertung');
+    let distanceLeft = target.offsetLeft + target.offsetWidth/2 - source.offsetLeft;
+    let distanceTop = target.offsetTop + target.offsetHeight/2 - source.offsetTop;
+
+    let style = `<style id="dynamicStyle">
+        .motionBallOffsetPath {
+            offset-path: path('M57,9 C42,9 ${distanceLeft*0.75},8 ${distanceLeft*0.75},9 C${distanceLeft-10},11 ${distanceLeft-10},29 ${distanceLeft},${distanceTop}');
+        }
+    </style>`;
+    $('head').append(style);
+}
+
 function housekeeping(){
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
@@ -143,6 +159,8 @@ function housekeeping(){
     document.getElementById("deutsch").style.width = "";
     document.getElementById("deutsch").style.height = "";
     document.getElementById("deutsch").style.display = "inline-block";
+
+    if(document.getElementById("dynamicStyle")) document.getElementById("dynamicStyle").remove();
 }
 
 function setRandomVocabulary(){
@@ -202,7 +220,7 @@ function setCursorToElement(element){
 //#endregion EventHandler
 
 //#region MAIN
-function getVokabeln(){
+function getVokabelnCSV(){
     if (window.vokabelListe) return window.vokabelListe;
 
     let data = window.vokabelListe_raw;
@@ -245,7 +263,8 @@ function getCSVData(){
 }
 
 function main(){
-    getCSVData();
+    //getCSVData();
+    restart();
     setEventHandler();
 }
 //#endregion MAIN

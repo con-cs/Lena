@@ -5,6 +5,7 @@
     margin: 1em;
     font-size: 1em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow: hidden;
 }
 
  /* Small devices (landscape phones, 576px and up) */
@@ -64,12 +65,12 @@ img {
     filter: invert(100%);  /*drop-shadow(8px 9px 4px black);*/
 }
 
-#star1{ top: 25em; right: 12em; transform: rotateZ(14deg);}
+#star1{ top: 22em; left: 2em; transform: rotateZ(14deg);}
 #star2{ top: 28em; right: 24em; transform: rotateZ(43deg);}
 #star3{ top: 18em; right: 35em; transform: rotateZ(18deg);}
 #star4{ top: 17em; right: 18em; transform: rotateZ(26deg);}
 #star5{ top: 33em; right:  8em; transform: rotateZ(17deg);}
-#star6{ top:  0em; right:  0em; transform: rotateZ(0deg);}
+#star6{ top:  30%; right:  10%; transform: rotateZ(0deg);}
 
 #container_inner{
     width: fit-content;
@@ -133,22 +134,25 @@ img {
 }
 
 .motionBall {
-    offset-path: path('M57,9 C42,9 369,8 384,9 C489,11 491,29 500,99');
     animation: move 600ms 1 alternate ease-in-out;
     width: 2em;
     height: 2em;
     background: cyan;
     border-radius: 1em;
     animation-fill-mode: forwards;
-  }
-  @keyframes move {
+}
+.motionBallOffsetPath {
+    offset-path: path('M57,9 C42,9 369,8 384,9 C489,11 491,29 500,99');
+}
+@keyframes move {
     0% {
       offset-distance: 0%;
     }
     100% {
       offset-distance: 100%;
     }
-  }
+}
+
 .spin{
   -webkit-animation:spin 300ms 5 linear;
   -moz-animation:spin 300ms 5 linear;
