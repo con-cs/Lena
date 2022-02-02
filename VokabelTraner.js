@@ -25,6 +25,11 @@ function check(){
     let grundform = getGrundformElement().value;
     let simplePast = getSimplePastElement().value;
 
+    if ($('#okButton').hasClass('restartButton')){
+        restart();
+        return;
+    }
+
     console.log(deutsch);
     console.log(grundform);
     console.log(simplePast);
@@ -100,11 +105,16 @@ function allDone(){
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
 
+    confettiNow();
+
     let sound = document.getElementById("endeSound");
     sound.play();
+
+    $('#okButton').addClass('restartButton');
 }
 
 function restart(){
+    $('#okButton').removeClass('restartButton');
     vokabelListeVorbereiten();
     setRandomVocabulary();
 }
@@ -133,7 +143,6 @@ function confettiNow(){
 
 function feedbackToUser(message){
     alert(message);
-    confettiNow();
 }
 //#endregion UserFeedback
 

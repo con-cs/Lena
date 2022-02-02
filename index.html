@@ -7,7 +7,7 @@
         <title>Vokabel Trainer</title>
 
         <link rel="stylesheet" href="VokabelTraner.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="third-party/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
         <script src="third-party/papaparse.min.js"></script>
         <script src="VokabelListe.js"></script>
@@ -26,7 +26,7 @@
                         <div class="inputContainer">
                             <label>simple past: </label><input id="simplePast" autocapitalize="none" />
                         </div>
-                        <div id="okButton" onclick="check()">ok</div>
+                        <div id="okButton" onclick="check()"></div>
                     </div>
                 </div>
                 <div style="display: flex;">
@@ -42,16 +42,19 @@
         <img src="img/star-regular.svg" id="star4"/>
         <img src="img/star-regular.svg" id="star5"/>
         <img src="img/star-regular.svg" id="star6"/>
-        <audio id="falschSound">
-            <source src="sound/meep.ogg" type="audio/ogg">
-        </audio>
-        <audio id="richtigSound">
-            <source src="sound/correct.ogg" type="audio/ogg">
-        </audio>
-        <audio id="endeSound">
-            <source src="sound/applause.ogg" type="audio/ogg">
-        </audio>
-        <div id="motionBall" class=""></div>
+
+        <div id="backend" style="display: none;">
+            <audio id="falschSound">
+                <source src="sound/meep.ogg" type="audio/ogg">
+            </audio>
+            <audio id="richtigSound">
+                <source src="sound/correct.ogg" type="audio/ogg">
+            </audio>
+            <audio id="endeSound">
+                <source src="sound/applause.ogg" type="audio/ogg">
+            </audio>
+            <div id="motionBall" class=""></div>
+        </div>
     </body>
     <script>
         main();
