@@ -37,10 +37,14 @@ function check(){
     let lösung = vokabelListe[deutsch];
     console.log(lösung);
 
-    if (grundform == lösung.grundform & (simplePast == lösung.simplepast)) {
+    if (grundform == lösung.grundform & simplePast == lösung.simplepast) {
         richtigeAntwort(deutsch);
     } else {
-        falscheAntwort();
+        let error = [];
+        if (grundform != lösung.grundform) error.push(getGrundformElement());
+        if (simplePast != lösung.simplepast) error.push(getSimplePastElement());
+
+        falscheAntwort(error);
     }
 }
 //#endregion LOGIC
@@ -91,9 +95,17 @@ function richtigeAntwort(antwort){
     );
 }
 
-function falscheAntwort(){
+function falscheAntwort(arrayOfErrorElements){
     let sound = document.getElementById("falschSound");
     sound.play();
+
+    arrayOfErrorElements.forEach(element => $(element).addClass('shaking'));
+    window.setTimeout(function(){
+        $('.shaking').removeClass('shaking');
+    }, 1000);
+
+    arrayOfErrorElements[0].focus();
+    arrayOfErrorElements[0].select();
 }
 
 function allDone(){
