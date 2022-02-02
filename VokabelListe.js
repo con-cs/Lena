@@ -75,9 +75,6 @@ function getVokabeln(){
         "tragen (Kleidung)": {grundform: "wear", simplePast: "wore"},
         gewinnen: {grundform: "win", simplePast: "won"},
         schreiben: {grundform: "write", simplePast: "wrote"},
-        : {grundform: "", simplePast: ""},
-        : {grundform: "", simplePast: ""},
-        : {grundform: "", simplePast: ""},
         // : {grundform: "", simplePast: ""},
     };
 
