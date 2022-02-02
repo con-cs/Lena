@@ -30,6 +30,8 @@ function check(){
     console.log(simplePast);
 
     let lösung = vokabelListe[deutsch];
+    console.log(lösung);
+
     if (grundform == lösung.grundform & (simplePast == lösung.simplePast || simplePast == lösung.simplepast)) {
         richtigeAntwort(deutsch);
     } else {
@@ -55,6 +57,9 @@ function richtigeAntwort(antwort){
 
             $('#deutsch').addClass('motionBall motionBallOffsetPath');
             window.setTimeout(function(){
+                let sound = document.getElementById("richtigSound");
+                sound.play();
+
                 // start shaking the box - animation duration 600 ms
                 $("#auswertungContainer").addClass("bounce-7");
                 window.setTimeout(function(){
@@ -95,7 +100,8 @@ function allDone(){
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
 
-    feedbackToUser(":) Super :)");
+    let sound = document.getElementById("endeSound");
+    sound.play();
 }
 
 function restart(){
