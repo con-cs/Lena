@@ -49,55 +49,36 @@ function check(){
 }
 //#endregion LOGIC
 
-//#region UserFeedback
+//#region Antworten: richtig/falsch/ende
 function richtigeAntwort(antwort){
     // delete this answer in backend. not to get it twice ;)
     delete vokabelListe[antwort];
+    correctAnswerAnimation(richtigeAntwort_Callback);
+}
 
+function richtigeAntwort_Callback(){
     let alleAntworten = parseInt(getCounterElements().gesamt.innerText);
     let gegebeneAntworten = parseInt(getCounterElements().verbraucht.innerText);
     gegebeneAntworten++;
 
-    $("#deutsch")
-        .css({overflow: "hidden"})
-        .animate({width: "1em", height: "1em"}, 200, function() {
-            // animate rolling to the box - animation duration 600ms
-            setOffsetPath();
+    getCounterElements().verbraucht.innerText = gegebeneAntworten;
 
-            $('#deutsch').addClass('motionBall motionBallOffsetPath');
-            window.setTimeout(function(){
-                let sound = document.getElementById("richtigSound");
-                sound.play();
+    if (alleAntworten == gegebeneAntworten) {
+        allDone();
+        return;
+    }
 
-                // start shaking the box - animation duration 600 ms
-                $("#auswertungContainer").addClass("bounce-7");
-                window.setTimeout(function(){
-                    // hide the ball in the box
-                    $('#deutsch').fadeOut();
-                    getCounterElements().verbraucht.innerText = gegebeneAntworten;
-
-                    if (alleAntworten == gegebeneAntworten) {
-                        allDone();
-                        return;
-                    }
-
-                    window.setTimeout(function(){
-                        // animation end
-                        // set new vocabulary in frontend ..
-                        setRandomVocabulary();
-                        // .. and clean the input fields
-                        housekeeping();
-                    }, 550);
-                }, 200);
-            }, 500);
-            // Animation complete.
-        }
-    );
+    window.setTimeout(function(){
+        // animation end
+        // set new vocabulary in frontend ..
+        setRandomVocabulary();
+        // .. and clean the input fields
+        housekeeping();
+    }, 550);
 }
 
 function falscheAntwort(arrayOfErrorElements){
-    let sound = document.getElementById("falschSound");
-    sound.play();
+    playSound_falsch();
 
     arrayOfErrorElements.forEach(element => $(element).addClass('shaking'));
     window.setTimeout(function(){
@@ -109,70 +90,18 @@ function falscheAntwort(arrayOfErrorElements){
 }
 
 function allDone(){
-    // $('img').addClass("spin");
-    // window.setTimeout(function(){
-    //     $('img').remveClass("spin");
-    // }, 2000);
-
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
 
     confettiNow();
 
-    let sound = document.getElementById("endeSound");
-    sound.play();
+    playSound_geschafft();
 
     $('#okButton').addClass('restartButton');
 }
-
-function restart(){
-    $('#okButton').removeClass('restartButton');
-    vokabelListeVorbereiten();
-    setRandomVocabulary();
-}
-
-function confettiNow(){
-    let end = Date.now() + (3 * 1000);
-    (function frame() {
-      confetti({
-        particleCount: 5,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-      });
-      confetti({
-        particleCount: 5,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-      });
-
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    }());
-}
-
-function feedbackToUser(message){
-    alert(message);
-}
-//#endregion UserFeedback
+//#endregion Antworten: richtig/falsch/ende
 
 //#region SETTER
-function setOffsetPath(){
-    let source = document.getElementById('deutsch');
-    let target = document.getElementById('auswertung');
-    let distanceLeft = target.offsetLeft + target.offsetWidth/2 - source.offsetLeft;
-    let distanceTop = target.offsetTop + target.offsetHeight/2 - source.offsetTop;
-
-    let style = `<style id="dynamicStyle">
-        .motionBallOffsetPath {
-            offset-path: path('M57,9 C42,9 ${distanceLeft*0.75},8 ${distanceLeft*0.75},9 C${distanceLeft-10},11 ${distanceLeft-10},29 ${distanceLeft},${distanceTop}');
-        }
-    </style>`;
-    $('head').append(style);
-}
-
 function housekeeping(){
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
@@ -247,46 +176,10 @@ function setCursorToElement(element){
 //#endregion EventHandler
 
 //#region MAIN
-function getVokabelnCSV(){
-    if (window.vokabelListe) return window.vokabelListe;
-
-    let data = window.vokabelListe_raw;
-    let vokabelListe = {};
-    let position, header, properties;
-    let identifierAttribute = "deutsch";
-
-    data.forEach(entry => {
-        if (!header){
-            // first row, init variables
-            header = entry.map(a => a.toLowerCase());
-            properties = header.filter(a => a !== identifierAttribute.toLowerCase());
-            position = {};
-            header.forEach((element, index) => position[element] = index);
-        } else {
-            let key = entry[position[identifierAttribute]];
-            if (key) {
-                vokabelListe[key] = {};
-                properties.forEach(property => vokabelListe[key][property] = entry[position[property]]);
-            }
-        }
-    });
-
-    return vokabelListe;
-}
-
-function getCSVData(){
-    $.ajax({
-        type: "GET",
-        url: "https://schulte-page.de/Vokabeltrainer/vokabeln.csv",
-        dataType: "text",
-        success: function(data) {
-            var results = Papa.parse(data);
-            window.vokabelListe_raw = results.data;
-            console.log(results);
-
-            restart();
-        }
-    });
+function restart(){
+    $('#okButton').removeClass('restartButton');
+    vokabelListeVorbereiten();
+    setRandomVocabulary();
 }
 
 function main(){

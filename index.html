@@ -6,12 +6,16 @@
 
         <title>Vokabel Trainer</title>
 
-        <link rel="stylesheet" href="VokabelTraner.css">
+        <link rel="stylesheet" href="css/VokabelTraner.css">
         <script src="third-party/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
         <script src="third-party/papaparse.min.js"></script>
+
         <script src="VokabelListe.js"></script>
-        <script src="VokabelTraner.js"></script>
+
+        <script src="js/animationController.js"></script>
+        <script src="js/soundController.js"></script>
+        <script src="js/VokabelTraner.js"></script>
     </head>
     <body>
         <div id="vokabelContainer">
@@ -53,7 +57,6 @@
             <audio id="endeSound">
                 <source src="sound/applause.ogg" type="audio/ogg">
             </audio>
-            <div id="motionBall" class=""></div>
         </div>
     </body>
     <script>
