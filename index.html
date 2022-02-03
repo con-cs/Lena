@@ -19,10 +19,10 @@
     </head>
     <body>
         <div id="vokabelContainer">
-            <div style="height: 1.5em;"><span style="line-height: 2em;">Vokabel: </span><span id="deutsch">gehen</span></div>
+            <div style="height: max-content;"><span style="line-height: 2em;">Vokabel: </span><span id="deutsch">gehen</span></div>
             <br>
-            <div style="display: flex;">
-                <div style="display: flex;">
+            <div style="display: inline-block;">
+                <div style="display: inline-block;">
                     <div id="container_inner">
                         <div class="inputContainer">
                             <label>Grundform: </label><input id="grundform" autocapitalize="none" />
@@ -33,7 +33,7 @@
                         <div id="okButton" onclick="check()"></div>
                     </div>
                 </div>
-                <div style="display: flex;">
+                <div style="display: inline-block;">
                     <div id="auswertungContainer">
                         <div id="auswertung"><span id="verbraucht">0</span> / <span id="gesamtzahl">0</span></div>
                     </div>
