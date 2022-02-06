@@ -17,6 +17,16 @@ function getCounterElements(){
         gesamt: document.getElementById("gesamtzahl")
     };
 }
+
+function getCountAllAnswers(){
+    let alleAntworten = parseInt(getCounterElements().gesamt.innerText);
+    return alleAntworten;
+}
+
+function getCountGivenAnswers(){
+    let gegebeneAntworten = parseInt(getCounterElements().verbraucht.innerText);
+    return gegebeneAntworten;
+}
 //#endregion GETTER
 
 //#region LOGIC
@@ -57,8 +67,8 @@ function richtigeAntwort(antwort){
 }
 
 function richtigeAntwort_Callback(){
-    let alleAntworten = parseInt(getCounterElements().gesamt.innerText);
-    let gegebeneAntworten = parseInt(getCounterElements().verbraucht.innerText);
+    let alleAntworten = getCountAllAnswers();
+    let gegebeneAntworten = getCountGivenAnswers();
     gegebeneAntworten++;
 
     getCounterElements().verbraucht.innerText = gegebeneAntworten;

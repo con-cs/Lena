@@ -6,12 +6,25 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     overflow: hidden;
 }
+.containerBottom{
+    float: right;
+    margin-top: -2em;
+}
 
  /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     body {
         margin: 1em;
         font-size: 1em;
+    }
+
+    #okButton {
+        float: right;
+    }
+
+    .containerBottom{
+        float: none;
+        margin-top: 0;
     }
 }
 
@@ -44,6 +57,10 @@ html {
     background: linear-gradient(90deg, rgba(177,48,215,1) 15%, rgba(0,212,255,1) 100%);
 }
 
+.containerBottom, .containerTop, .containerMain{
+    display: inline-block;
+}
+
 input, #deutsch{
     padding: 0.3em 0.5em;
     font-size: 1em;
@@ -66,10 +83,10 @@ img {
 
 #star1{ top: 22em; left:   2em; transform: rotateZ(14deg);}
 #star2{ top: 28em; right: 24em; transform: rotateZ(43deg);}
-#star3{ top: 18em; right: 35em; transform: rotateZ(18deg);}
+#star3{ top: 16em; right: 35em; transform: rotateZ(18deg);}
 #star4{ top: 17em; right: 18em; transform: rotateZ(26deg);}
 #star5{ top: 33em; right:  8em; transform: rotateZ(17deg);}
-#star6{ top: 14em; right:  10%; transform: rotateZ(0deg);}
+#star6{ top: 26em; right:  10%; transform: rotateZ(0deg);}
 
 #container_inner{
     width: fit-content;
@@ -91,7 +108,6 @@ img {
     opacity: 0.9;
     text-align: center;
     line-height: 2em;
-    float: right;
 }
 #okButton:after {
     content: "ok";
@@ -114,19 +130,39 @@ img {
 
 #auswertungContainer {
     margin: 0 2em;
-    background: rgba(255,255,255,0.3);
-    line-height: 4em;
-    padding: 1em;
-    height: 3em;
+    background: rgba(6, 187, 6, 0.87);
+    width: 4em;
+    height: 5em;
     border-radius: 0 0 0.3em 0.3em;
     border: 3px solid black;
     border-top: 0;
     box-shadow: 0 0 7px;
+    position: relative;
 }
 
 #auswertung {
     width: max-content;
+    display: inline-flex;
+    margin: 2em 1em 0 1em;
+    position: absolute;
 }
+
+.progress {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: rgb(154, 181, 231);
+    transition: height .6s ease;
+}
+
+
+
+
+
 
 .bounce-7 {
     animation-duration: 600ms;

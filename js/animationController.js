@@ -1,6 +1,6 @@
 function setOffsetPath(){
     let source = document.getElementById('deutsch');
-    let target = document.getElementById('auswertung');
+    let target = document.getElementById('auswertungContainer');
     let distanceLeft = target.offsetLeft + target.offsetWidth/2 - source.offsetLeft;
     let distanceTop = target.offsetTop + target.offsetHeight/2 - source.offsetTop;
 
@@ -50,6 +50,11 @@ function correctAnswerAnimation(callback){
                 window.setTimeout(function(){
                     // hide the ball in the box
                     $('#deutsch').fadeOut();
+
+                    let givenAnswersPercentage = (getCountGivenAnswers()+1)/getCountAllAnswers();
+                    let heightDifInPercent = 100 - (givenAnswersPercentage * 100);
+                    $('#progressContainer').css({height: heightDifInPercent + '%'})
+
                     callback();
                 }, 200);
             }, 500);
