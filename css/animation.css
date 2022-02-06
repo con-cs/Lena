@@ -1,9 +1,6 @@
-
 .progress {
-    width: calc(100% + 2px);
-    margin-left: -1px;
-    border-radius: 0 0 0.1em 0.1em;
-
+    width: calc(100% + 1px);
+    margin-left: -0.5px;
     height: calc(100% + 1px);
     position: absolute;
     overflow: hidden;
@@ -12,6 +9,10 @@
     white-space: nowrap;
     background-color: rgb(154, 181, 231);
     transition: height .6s ease;
+}
+
+.progress_start {
+    border-radius: 0 0 0.25em 0.25em;
 }
 
 .bounce-7 {

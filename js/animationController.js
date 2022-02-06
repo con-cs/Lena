@@ -51,9 +51,9 @@ function correctAnswerAnimation(callback){
                     // hide the ball in the box
                     $('#deutsch').fadeOut();
 
-                    let givenAnswersPercentage = (getCountGivenAnswers()+1)/getCountAllAnswers();
+                    let givenAnswersPercentage = getCountGivenAnswersThisRun()/getCountAllAnswersThisRun();
                     let heightDifInPercent = 100 - (givenAnswersPercentage * 100);
-                    $('#progressContainer').css({height: heightDifInPercent + '%'})
+                    $('#progressContainer').css({height: heightDifInPercent + '%'}).removeClass("progress_start");
 
                     callback();
                 }, 200);

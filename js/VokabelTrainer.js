@@ -1,4 +1,54 @@
+//#region CONFIG
+function setConfig(vokabelListe){
+    let answersToGivePerRun = 10;
+    window.config = {
+        vokabelListe: {
+            original: JSON.parse(JSON.stringify(vokabelListe)),
+            modified: JSON.parse(JSON.stringify(vokabelListe)),
+            done: [],
+            doneThisRun: []
+        },
+        count: {
+            perRun: answersToGivePerRun,
+            all: Object.keys(vokabelListe).length,
+            donePerRun: 0,
+            leftPerRun: answersToGivePerRun,
+            doneAtAll: 0,
+            leftAtAll: Object.keys(vokabelListe).length
+        }
+    }
+}
+
+function rememberThisAnswer(answer){
+    let givenAnswer = {};
+    givenAnswer[answer] = window.config.vokabelListe.modified[answer];
+    window.config.vokabelListe.done.push(answer);
+    window.config.vokabelListe.doneThisRun.push(answer);
+
+    // delete this answer in backend. not to get it twice ;)
+    delete window.config.vokabelListe.modified[answer];
+
+    let all = Object.keys(window.config.vokabelListe.original).length;
+    let doneAtAll = window.config.vokabelListe.done.length;
+    let given = window.config.vokabelListe.doneThisRun.length;
+    let toGive = window.config.count.perRun;
+
+    window.config.count.donePerRun = given;
+    window.config.count.leftPerRun = toGive - given;
+    window.config.count.doneAtAll = doneAtAll;
+    window.config.count.leftAtAll = all - doneAtAll;
+}
+//#endregion CONFIG
+
 //#region GETTER
+function getCountAllAnswersThisRun(){
+    return window.config.count.perRun;
+}
+
+function getCountGivenAnswersThisRun(){
+    return window.config.count.donePerRun;
+}
+
 function getDeutschElement(){
     return document.getElementById("deutsch");
 }
@@ -17,16 +67,6 @@ function getCounterElements(){
         gesamt: document.getElementById("gesamtzahl")
     };
 }
-
-function getCountAllAnswers(){
-    let alleAntworten = parseInt(getCounterElements().gesamt.innerText);
-    return alleAntworten;
-}
-
-function getCountGivenAnswers(){
-    let gegebeneAntworten = parseInt(getCounterElements().verbraucht.innerText);
-    return gegebeneAntworten;
-}
 //#endregion GETTER
 
 //#region LOGIC
@@ -44,7 +84,7 @@ function check(){
     console.log(grundform);
     console.log(simplePast);
 
-    let lösung = vokabelListe[deutsch];
+    let lösung = window.config.vokabelListe.original[deutsch];
     console.log(lösung);
 
     if (grundform == lösung.grundform.trim() & simplePast == lösung.simplepast.trim()) {
@@ -61,15 +101,14 @@ function check(){
 
 //#region Antworten: richtig/falsch/ende
 function richtigeAntwort(antwort){
-    // delete this answer in backend. not to get it twice ;)
-    delete vokabelListe[antwort];
+    rememberThisAnswer(antwort);
+
     correctAnswerAnimation(richtigeAntwort_Callback);
 }
 
 function richtigeAntwort_Callback(){
-    let alleAntworten = getCountAllAnswers();
-    let gegebeneAntworten = getCountGivenAnswers();
-    gegebeneAntworten++;
+    let alleAntworten = getCountAllAnswersThisRun();
+    let gegebeneAntworten = getCountGivenAnswersThisRun();
 
     getCounterElements().verbraucht.innerText = gegebeneAntworten;
 
@@ -102,6 +141,8 @@ function falscheAntwort(arrayOfErrorElements){
 function allDone(){
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
+    window.config.vokabelListe.doneThisRun = [];
+    $('#progressContainer').css({height: '100%'}).addClass("progress_start");
 
     confettiNow();
 
@@ -116,32 +157,33 @@ function housekeeping(){
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
 
-    getGrundformElement().focus();
-    getGrundformElement().select();
-
     document.getElementById("auswertungContainer").className = "rainbow";
+
+    if(document.getElementById("dynamicStyle")) document.getElementById("dynamicStyle").remove();
+}
+
+function setRandomVocabulary(){
+    let vokabeln = Object.keys(window.config.vokabelListe.modified);
+    let randomZahl = Math.floor(Math.random() * vokabeln.length);
+
+    setCursorToElement(getGrundformElement());
+
     document.getElementById("deutsch").className = "";
     document.getElementById("deutsch").style.overflow = "auto";
     document.getElementById("deutsch").style.width = "";
     document.getElementById("deutsch").style.height = "";
     document.getElementById("deutsch").style.display = "inline-block";
 
-    if(document.getElementById("dynamicStyle")) document.getElementById("dynamicStyle").remove();
-}
-
-function setRandomVocabulary(){
-    let vokabeln = Object.keys(vokabelListe);
-    let randomZahl = Math.floor(Math.random() * vokabeln.length);
-
     getDeutschElement().innerText = vokabeln[randomZahl];
 }
 
 function vokabelListeVorbereiten(max){
-    window.vokabelListe = getVokabeln();
+    setConfig(getVokabeln());
 
     housekeeping();
-    if (!max) max = 10;
-    let all = Object.keys(window.vokabelListe).length;
+
+    if (!max) max = window.config.count.perRun;
+    let all = Object.keys(window.config.vokabelListe.modified).length;
 
     getCounterElements().gesamt.innerText =  all < max ? all : max;
     getCounterElements().verbraucht.innerText = "0";
@@ -188,12 +230,14 @@ function setCursorToElement(element){
 //#region MAIN
 function restart(){
     $('#okButton').removeClass('restartButton');
-    vokabelListeVorbereiten();
+    getCounterElements().verbraucht.innerText = "0";
+
     setRandomVocabulary();
 }
 
 function main(){
     //getCSVData();
+    vokabelListeVorbereiten();
     restart();
     setEventHandler();
 }
