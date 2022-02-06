@@ -119,7 +119,7 @@ function housekeeping(){
     getGrundformElement().focus();
     getGrundformElement().select();
 
-    document.getElementById("auswertungContainer").className = "";
+    document.getElementById("auswertungContainer").className = "rainbow";
     document.getElementById("deutsch").className = "";
     document.getElementById("deutsch").style.overflow = "auto";
     document.getElementById("deutsch").style.width = "";

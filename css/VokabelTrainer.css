@@ -145,100 +145,13 @@ img {
     display: inline-flex;
     margin: 2em 1em 0 1em;
     position: absolute;
-}
-
-.progress {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    overflow: hidden;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    background-color: rgb(154, 181, 231);
-    transition: height .6s ease;
+    color: white;
 }
 
 .rainbow{
-    background: red , orange , yellow, green, cyan, blue, violet; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left, red , orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, red , orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
-}
-
-.bounce-7 {
-    animation-duration: 600ms;
-    animation-iteration-count: 1;
-    transform-origin: bottom;
-    animation-name: bounce-7;
-    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
-}
-@keyframes bounce-7 {
-    0%   { transform: scale(1,1)      translateY(0); }
-    10%  { transform: scale(1.1,.9)   translateY(0); }
-    30%  { transform: scale(.9,1.1)   translateY(-20px); }
-    50%  { transform: scale(1.05,.95) translateY(0); }
-    57%  { transform: scale(1,1)      translateY(-7px); }
-    64%  { transform: scale(1,1)      translateY(0); }
-    100% { transform: scale(1,1)      translateY(0); }
-}
-
-.motionBall {
-    animation: move 600ms 1 alternate ease-in-out;
-    width: 2em;
-    height: 2em;
-    background: cyan;
-    border-radius: 1em;
-    animation-fill-mode: forwards;
-}
-.motionBallOffsetPath {
-    offset-path: path('M57,9 C42,9 369,8 384,9 C489,11 491,29 500,99');
-}
-@keyframes move {
-    0% {
-      offset-distance: 0%;
-    }
-    100% {
-      offset-distance: 100%;
-    }
-}
-
-.spin{
-  -webkit-animation:spin 300ms 5 linear;
-  -moz-animation:spin 300ms 5 linear;
-  animation:spin 300ms 5 linear;
-}
-@-moz-keyframes spin {
-  100% { -moz-transform: rotate3d(1, 1, 1, 360deg); }
-}
-@-webkit-keyframes spin {
-    100% { -webkit-transform: rotate3d(1, 1, 1, 360deg); }
-}
-@keyframes spin {
-    100% {
-        -webkit-transform: rotate3d(1, 1, 1, 360deg);
-        transform: rotate3d(1, 1, 1, 360deg);
-    }
-}
-
-.shaking {
-    /* Start the shake animation and make the animation last for 0.5 seconds */
-    animation: shake 0.5s;
-
-    /* When the animation is finished, start again */
-    animation-iteration-count: infinite;
-}
-@keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+    background: rgba(6, 187, 6, 0.87) !important; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(bottom, red , orange , yellow, green, cyan, blue, violet) !important; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, red , orange, yellow, green, cyan, blue, violet) !important; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, red, orange, yellow, green, cyan, blue, violet) !important; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top, red, orange , yellow, green, cyan, blue, violet) !important; /* Standard syntax (must be last) */
 }
