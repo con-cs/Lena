@@ -6,7 +6,7 @@ function getVokabeln(){
         werden: {grundform: "become", simplepast: "became"},
         "beginnen, anfangen": {grundform: "begin", simplepast: "began"},
         beißen: {grundform: "bite", simplepast: "bit"},
-        "etwas auspusten, ausblasen": {grundform: "blow sth. out", simplepast: "blew"},
+        "etwas auspusten, ausblasen": {grundform: "blow", simplepast: "blew"},
         "brechen; zerbrechen": {grundform: "break", simplepast: "broke"},
         bringen: {grundform: "bring", simplepast: "brought"},
         bauen: {grundform: "build", simplepast: "built"},
