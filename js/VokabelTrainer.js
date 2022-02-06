@@ -31,9 +31,9 @@ function getCountGivenAnswers(){
 
 //#region LOGIC
 function check(){
-    let deutsch = getDeutschElement().innerText;
-    let grundform = getGrundformElement().value;
-    let simplePast = getSimplePastElement().value;
+    let deutsch = getDeutschElement().innerText.trim();
+    let grundform = getGrundformElement().value.trim();
+    let simplePast = getSimplePastElement().value.trim();
 
     if ($('#okButton').hasClass('restartButton')){
         restart();
@@ -47,7 +47,7 @@ function check(){
     let lösung = vokabelListe[deutsch];
     console.log(lösung);
 
-    if (grundform == lösung.grundform & simplePast == lösung.simplepast) {
+    if (grundform == lösung.grundform.trim() & simplePast == lösung.simplepast.trim()) {
         richtigeAntwort(deutsch);
     } else {
         let error = [];
