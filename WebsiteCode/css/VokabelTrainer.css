@@ -61,11 +61,20 @@ html {
     display: inline-block;
 }
 
-input, #deutsch{
+input, #deutsch, #to{
     padding: 0.3em 0.5em;
     font-size: 1em;
     border-radius: 2em;
     margin-left: 0.5em;
+}
+
+#grundform{
+    padding-left: 1.5em;
+}
+
+#to{
+    position: absolute;
+    opacity: 0.7;
 }
 
 #deutsch{
@@ -148,10 +157,66 @@ img {
     color: black;
 }
 
+#statistic{
+    width: fit-content;
+    float: right;
+    border: 1px solid gainsboro;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+
 .rainbow{
     background: rgba(6, 187, 6, 0.87) !important; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(bottom, #eb1e1e, #ff8d00 , yellow, lightgreen, #14a6e8, #ca58fa) !important; /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(bottom, #eb1e1e, #ff8d00 , yellow, lightgreen, #14a6e8, #ca58fa) !important; /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(bottom, #eb1e1e, #ff8d00 , yellow, lightgreen, #14a6e8, #ca58fa) !important; /* For Firefox 3.6 to 15 */
     background: linear-gradient(to top, #eb1e1e, #ff8d00 , yellow, lightgreen, #14a6e8, #ca58fa) !important; /* Standard syntax (must be last) */
+}
+
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    margin-block: 0;
+    margin-inline: 0;
+    padding-inline: 0;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    animation: iceCubeBubbles 25s linear infinite;
+    border-radius: 1em;
+    bottom: -150px;
+}
+
+.circles li:nth-child(1){  left: 25%; width: 10px; height: 10px; animation-delay: 0s; animation-duration: 22s; }
+.circles li:nth-child(2){  left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 32s; }
+.circles li:nth-child(3){  left: 70%; width: 20px; height: 20px; animation-delay: 4s; animation-duration: 22s; }
+.circles li:nth-child(4){  left: 40%; width: 10px; height: 10px; animation-delay: 0s; animation-duration: 28s; }
+.circles li:nth-child(5){  left: 65%; width: 20px; height: 20px; animation-delay: 0s; animation-duration: 42s; }
+.circles li:nth-child(6){  left: 75%; width: 30px; height: 30px; animation-delay: 3s; animation-duration: 32s; }
+.circles li:nth-child(7){  left: 35%; width: 15px; height: 15px; animation-delay: 7s; animation-duration: 42s; }
+.circles li:nth-child(8){  left: 50%; width: 25px; height: 25px; animation-delay: 5s; animation-duration: 45s; }
+.circles li:nth-child(9){  left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+.circles li:nth-child(10){ left: 85%; width: 20px; height: 20px; animation-delay: 0s; animation-duration: 31s; }
+
+@keyframes iceCubeBubbles {
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+    }
 }

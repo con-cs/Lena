@@ -10,11 +10,14 @@ function setConfig(vokabelListe){
         },
         count: {
             perRun: answersToGivePerRun,
+            run: 0,
             all: Object.keys(vokabelListe).length,
             donePerRun: 0,
             leftPerRun: answersToGivePerRun,
             doneAtAll: 0,
-            leftAtAll: Object.keys(vokabelListe).length
+            leftAtAll: Object.keys(vokabelListe).length,
+            triesPerRun: 0,
+            triesAtAll: 0
         }
     }
 }
@@ -31,16 +34,39 @@ function refreshCountingConfig(){
     window.config.count.leftAtAll = all - doneAtAll;
 }
 
+function updateStatistic(){
+    refreshCountingConfig();
+
+    let statistic = $('#statistic');
+    statistic.find('#tries').text(window.config.count.triesAtAll);
+    statistic.find('#tries_right').text(window.config.vokabelListe.done.length);
+    statistic.find('#tries_wrong').text(window.config.count.triesAtAll - window.config.vokabelListe.done.length);
+    statistic.find('#run').text(window.config.count.triesPerRun);
+    statistic.find('#run_right').text(window.config.count.donePerRun);
+    statistic.find('#run_wrong').text(window.config.count.triesPerRun - window.config.count.donePerRun);
+    statistic.find('#level').text(window.config.count.run);
+    statistic.find('#atall').text(window.config.count.all);
+    statistic.find('#leftatall').text(window.config.count.all - window.config.count.triesAtAll);
+}
+
+function rememberThisWrongAnswer(){
+    window.config.count.triesPerRun++;
+    window.config.count.triesAtAll++;
+
+    updateStatistic();
+}
+
 function rememberThisCorrectAnswer(answer){
     let givenAnswer = {};
     givenAnswer[answer] = window.config.vokabelListe.modified[answer];
     window.config.vokabelListe.done.push(answer);
     window.config.vokabelListe.doneThisRun.push(answer);
 
+    window.config.count.triesPerRun++;
+    window.config.count.triesAtAll++;
+
     // delete this answer in backend. not to get it twice ;)
     delete window.config.vokabelListe.modified[answer];
-
-    refreshCountingConfig();
 }
 //#endregion CONFIG
 
@@ -111,6 +137,8 @@ function richtigeAntwort(antwort){
 }
 
 function richtigeAntwort_Callback(){
+    updateStatistic();
+
     let alleAntworten = getCountAllAnswersThisRun();
     let gegebeneAntworten = getCountGivenAnswersThisRun();
 
@@ -131,6 +159,8 @@ function richtigeAntwort_Callback(){
 }
 
 function falscheAntwort(arrayOfErrorElements){
+    rememberThisWrongAnswer();
+
     playSound_falsch();
 
     arrayOfErrorElements.forEach(element => $(element).addClass('shaking'));
@@ -145,7 +175,8 @@ function falscheAntwort(arrayOfErrorElements){
 function allDone(){
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
-    window.config.vokabelListe.doneThisRun = [];
+
+    $('#progressContainer').css({height: '0%'}).removeClass("progress_start");
 
     confettiNow();
 
@@ -233,6 +264,12 @@ function setCursorToElement(element){
 //#region MAIN
 function restart(){
     $('#okButton').removeClass('restartButton');
+
+    window.config.vokabelListe.doneThisRun = [];
+    window.config.count.triesPerRun = 0;
+    window.config.count.run++;
+
+    updateStatistic();
 
     $('#progressContainer').css({height: '100%'}).addClass("progress_start");
     getCounterElements().verbraucht.innerText = "0";
