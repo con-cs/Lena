@@ -146,7 +146,6 @@ function allDone(){
     getSimplePastElement().value = "";
     getGrundformElement().value = "";
     window.config.vokabelListe.doneThisRun = [];
-    $('#progressContainer').css({height: '100%'}).addClass("progress_start");
 
     confettiNow();
 
@@ -234,6 +233,8 @@ function setCursorToElement(element){
 //#region MAIN
 function restart(){
     $('#okButton').removeClass('restartButton');
+
+    $('#progressContainer').css({height: '100%'}).addClass("progress_start");
     getCounterElements().verbraucht.innerText = "0";
 
     setRandomVocabulary();

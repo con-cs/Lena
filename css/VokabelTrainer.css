@@ -145,13 +145,13 @@ img {
     display: inline-flex;
     margin: 2em 1em 0 1em;
     position: absolute;
-    color: white;
+    color: black;
 }
 
 .rainbow{
     background: rgba(6, 187, 6, 0.87) !important; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(bottom, red , orange , yellow, green, cyan, blue, violet) !important; /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom, red , orange, yellow, green, cyan, blue, violet) !important; /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom, red, orange, yellow, green, cyan, blue, violet) !important; /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to top, red, orange , yellow, green, cyan, blue, violet) !important; /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(bottom, #eb1e1e, #ff8d00 , yellow, lightgreen, #14a6e8, #ca58fa) !important; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, #eb1e1e, #ff8d00 , yellow, lightgreen, #14a6e8, #ca58fa) !important; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, #eb1e1e, #ff8d00 , yellow, lightgreen, #14a6e8, #ca58fa) !important; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top, #eb1e1e, #ff8d00 , yellow, lightgreen, #14a6e8, #ca58fa) !important; /* Standard syntax (must be last) */
 }
