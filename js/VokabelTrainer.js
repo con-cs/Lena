@@ -19,15 +19,7 @@ function setConfig(vokabelListe){
     }
 }
 
-function rememberThisAnswer(answer){
-    let givenAnswer = {};
-    givenAnswer[answer] = window.config.vokabelListe.modified[answer];
-    window.config.vokabelListe.done.push(answer);
-    window.config.vokabelListe.doneThisRun.push(answer);
-
-    // delete this answer in backend. not to get it twice ;)
-    delete window.config.vokabelListe.modified[answer];
-
+function refreshCountingConfig(){
     let all = Object.keys(window.config.vokabelListe.original).length;
     let doneAtAll = window.config.vokabelListe.done.length;
     let given = window.config.vokabelListe.doneThisRun.length;
@@ -37,6 +29,18 @@ function rememberThisAnswer(answer){
     window.config.count.leftPerRun = toGive - given;
     window.config.count.doneAtAll = doneAtAll;
     window.config.count.leftAtAll = all - doneAtAll;
+}
+
+function rememberThisCorrectAnswer(answer){
+    let givenAnswer = {};
+    givenAnswer[answer] = window.config.vokabelListe.modified[answer];
+    window.config.vokabelListe.done.push(answer);
+    window.config.vokabelListe.doneThisRun.push(answer);
+
+    // delete this answer in backend. not to get it twice ;)
+    delete window.config.vokabelListe.modified[answer];
+
+    refreshCountingConfig();
 }
 //#endregion CONFIG
 
@@ -101,7 +105,7 @@ function check(){
 
 //#region Antworten: richtig/falsch/ende
 function richtigeAntwort(antwort){
-    rememberThisAnswer(antwort);
+    rememberThisCorrectAnswer(antwort);
 
     correctAnswerAnimation(richtigeAntwort_Callback);
 }
