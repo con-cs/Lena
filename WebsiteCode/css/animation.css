@@ -1,7 +1,4 @@
 .progress {
-    width: calc(100% + 1px);
-    margin-left: -0.5px;
-    height: calc(100% + 1px);
     position: absolute;
     overflow: hidden;
     color: #fff;
