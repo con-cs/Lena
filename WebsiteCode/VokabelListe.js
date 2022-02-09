@@ -14,7 +14,7 @@ function getVokabeln(){
         fangen: {grundform: "catch", simplepast: "caught"},
         "aussuchen, (aus)wählen": {grundform: "choose", simplepast: "chose"},
         kommen: {grundform: "come", simplepast: "came"},
-/*        kosten: {grundform: "cost", simplepast: "cost"},
+        kosten: {grundform: "cost", simplepast: "cost"},
         schneiden: {grundform: "cut", simplepast: "cut"},
         "tun, machen": {grundform: "do", simplepast: "did"},
         zeichnen: {grundform: "draw", simplepast: "drew"},
@@ -75,7 +75,7 @@ function getVokabeln(){
         "tragen (Kleidung)": {grundform: "wear", simplepast: "wore"},
         gewinnen: {grundform: "win", simplepast: "won"},
         schreiben: {grundform: "write", simplepast: "wrote"},
-        // : {grundform: "", simplepast: ""},*/
+        // : {grundform: "", simplepast: ""},
     };
 
     return vokabeln;
