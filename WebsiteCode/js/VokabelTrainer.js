@@ -35,6 +35,11 @@ function check(){
     let grundform = getGrundformElement().value.trim();
     let simplePast = getSimplePastElement().value.trim();
 
+    if ($('#okButton').hasClass('reloadButton')){
+        window.location.reload();
+        return;
+    }
+
     if ($('#okButton').hasClass('restartButton')){
         restart();
         return;
