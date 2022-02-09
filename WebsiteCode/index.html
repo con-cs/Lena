@@ -47,66 +47,72 @@
         <script src="js/VokabelTrainer.js"></script>
     </head>
     <body>
-        <div id="vokabelContainer">
-            <div style="height: max-content;"><span style="line-height: 2em;">Vokabel: </span><span id="deutsch">gehen</span></div>
-            <br>
-            <div class="containerMain">
-                <div class="containerTop">
-                    <div id="container_inner">
-                        <div class="inputContainer">
-                            <label>Grundform: </label>
-                            <span id="to">to</span>
-                            <input id="grundform" autocapitalize="none" />
+        <div class="flex-container">
+            <div id="vokabelContainer">
+                <div style="height: max-content;"><span style="line-height: 2em;">Vokabel: </span><span id="deutsch">gehen</span></div>
+                <br>
+                <div class="containerMain">
+                    <div class="containerTop">
+                        <div id="container_inner">
+                            <div class="inputContainer">
+                                <label>Grundform: </label>
+                                <span id="to">to</span>
+                                <input id="grundform" autocapitalize="none" />
+                            </div>
+                            <div class="inputContainer">
+                                <label>simple past: </label>
+                                <input id="simplePast" autocapitalize="none" />
+                            </div>
+                            <div id="okButton" onclick="check()"></div>
                         </div>
-                        <div class="inputContainer">
-                            <label>simple past: </label>
-                            <input id="simplePast" autocapitalize="none" />
+                    </div>
+                    <div class="containerBottom">
+                        <div id="auswertungContainer" class="rainbow">
+                            <div class="area">
+                                <ul class="circles">
+                              </li>  <li>
+                              </li>  <li>
+                              </li>  <li>
+                              </li>  <li>
+                              </li>  <li>
+                              </li>  <li>
+                              </li>  <li>
+                              </li>  <li>
+                              </li>  <li>
+                              </li>  <li>
+                                </ul>
+                            </div>
+                            <div id="progressContainer" class="progress progress_start"></div>
+                            <div id="auswertung"><span id="verbraucht">0</span> / <span id="gesamtzahl">0</span></div>
                         </div>
-                        <div id="okButton" onclick="check()"></div>
                     </div>
                 </div>
-                <div class="containerBottom">
-                    <div id="auswertungContainer" class="rainbow">
-                        <div class="area">
-                            <ul class="circles">
-                               <li></li>
-                               <li></li>
-                               <li></li>
-                               <li></li>
-                               <li></li>
-                               <li></li>
-                               <li></li>
-                               <li></li>
-                               <li></li>
-                               <li></li>
-                            </ul>
-                         </div>
-                        <div id="progressContainer" class="progress progress_start"></div>
-                        <div id="auswertung"><span id="verbraucht">0</span> / <span id="gesamtzahl">0</span></div>
+            </div>
+            <div id="bottomArea">
+                <img src="img/star-regular.svg" id="star1"/>
+                <img src="img/star-regular.svg" id="star2"/>
+                <img src="img/star-regular.svg" id="star3"/>
+                <img src="img/star-regular.svg" id="star4"/>
+                <img src="img/star-regular.svg" id="star5"/>
+                <img src="img/star-regular.svg" id="star6"/>
+                <div id="statistic">
+                    <div id="statisticLabel">Zahlen</div>
+                    <div id="statisticContainer">
+                        <div><span>Level: </span><span id="level"></span></div>
+                        <div><span>Vokabeln gesamt: </span><span id="atall"></span></div>
+                        <div><span>Vokabeln noch übrig: </span><span id="leftatall"></span></div>
+                        <hr>
+                        <div><span>Versuche dieses Level: </span><span id="run"></span></div>
+                        <div><li class="bulletpoint">richtig: <span id="run_right"></span></li></div>
+                        <div><li class="bulletpoint">falsch: <span id="run_wrong"></span></li></div>
+                        <hr>
+                        <div><span>Versuche insgesamt: </span><span id="tries"></span></div>
+                        <div><li class="bulletpoint">richtig: <span id="tries_right"></span></li></div>
+                        <div><li class="bulletpoint">falsch: <span id="tries_wrong"></span></li></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="statistic">
-            <div><span>Level: </span><span id="level"></span></div>
-            <div><span>Vokabeln gesamt: </span><span id="atall"></span></div>
-            <div><span>Vokabeln noch übrig: </span><span id="leftatall"></span></div>
-            <hr>
-            <div><span>Versuche dieses Level: </span><span id="run"></span></div>
-            <div><span>-> richtig: </span><span id="run_right"></span></div>
-            <div><span>-> falsch: </span><span id="run_wrong"></span></div>
-            <hr>
-            <div><span>Versuche insgesamt: </span><span id="tries"></span></div>
-            <div><span>-> richtig: </span><span id="tries_right"></span></div>
-            <div><span>-> falsch: </span><span id="tries_wrong"></span></div>
-        </div>
-        <img src="img/star-regular.svg" id="star1"/>
-        <img src="img/star-regular.svg" id="star2"/>
-        <img src="img/star-regular.svg" id="star3"/>
-        <img src="img/star-regular.svg" id="star4"/>
-        <img src="img/star-regular.svg" id="star5"/>
-        <img src="img/star-regular.svg" id="star6"/>
-
         <div id="backend" style="display: none;">
             <audio id="falschSound">
                 <source src="sound/meep.ogg" type="audio/ogg">

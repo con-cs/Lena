@@ -1,10 +1,9 @@
  /* Extra small devices (portrait phones, less than 576px) */
  /* No media query since this is the default in Bootstrap */
- body {
+body {
     margin: 1em;
     font-size: 1em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    overflow: hidden;
 }
 .containerBottom{
     float: right;
@@ -61,6 +60,17 @@ html {
     display: inline-block;
 }
 
+#vokabelContainer, #bottomArea{
+    height: 50vh;
+    width: fit-content;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 input, #deutsch, #to{
     padding: 0.3em 0.5em;
     font-size: 1em;
@@ -75,6 +85,7 @@ input, #deutsch, #to{
 #to{
     position: absolute;
     opacity: 0.7;
+    margin-top: 0.05rem;
 }
 
 #deutsch{
@@ -88,6 +99,7 @@ img {
     width: 6em;
     position: absolute;
     filter: invert(100%);  /*drop-shadow(8px 9px 4px black);*/
+    z-index: -1;
 }
 
 #star1{ top: 22em; left:   2em; transform: rotateZ(14deg);}
@@ -159,12 +171,28 @@ img {
 
 #statistic{
     width: fit-content;
-    float: right;
     border: 1px solid gainsboro;
-    padding: 1em;
+    padding: 1rem;
     border-radius: 5px;
+    background-color: rgba(200,200,200,0.3);
+    color: rgba(34, 32, 32, 0.9);
+    margin: 1em;
+    font-size: 1.4rem !important;
 }
 
+#statisticLabel{
+    margin-top: -2em;
+    float: right;
+    background: #6cacff;
+    padding: 0.2rem;
+    border-radius: 5px;
+    border-top: 1px solid gainsboro;
+    font-size: 0.75rem;
+}
+
+.bulletpoint {
+    margin-left: 1em;
+}
 
 .rainbow{
     background: rgba(6, 187, 6, 0.87) !important; /* For browsers that do not support gradients */
