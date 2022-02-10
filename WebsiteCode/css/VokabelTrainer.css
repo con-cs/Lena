@@ -21,6 +21,7 @@ body {
     body {
         margin: 1em;
         font-size: 1em;
+        overflow: hidden;
     }
 
     #okButton {
