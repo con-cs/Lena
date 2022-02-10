@@ -181,13 +181,17 @@ img {
 }
 
 #statisticLabel{
-    margin-top: -2em;
+    margin: -2em 3em 0 3em;
     float: right;
-    background: #6cacff;
-    padding: 0.2rem;
+    background: #76a9ec;
+    padding: 0.2rem 1rem 0.2rem 1rem;
     border-radius: 5px;
     border-top: 1px solid gainsboro;
     font-size: 0.75rem;
+}
+#statisticLabel:hover{
+    cursor: pointer;
+    background: #6cacff;
 }
 
 .bulletpoint {

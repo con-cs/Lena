@@ -259,6 +259,15 @@ function setCursorToElement(element){
     element.focus();
     element.select();
 }
+
+function toggleStatistics(){
+    let statisticElements = $('#statisticContainer>*');
+    if(statisticElements.is(':visible')){
+        $('#statisticContainer>*').slideUp();
+    } else {
+        $('#statisticContainer>*').slideDown();
+    }
+}
 //#endregion EventHandler
 
 //#region MAIN
