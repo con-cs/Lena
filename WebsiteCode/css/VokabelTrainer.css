@@ -204,27 +204,51 @@ img {
 
 #statistic{
     width: fit-content;
-    border: 1px solid gainsboro;
-    padding: 1rem;
-    border-radius: 5px;
-    background-color: rgba(200,200,200,0.3);
     color: rgba(34, 32, 32, 0.9);
     margin: 1em;
     font-size: 1.4rem !important;
 }
 
 #statisticLabel{
-    margin: -2em 3em 0 10em;
-    float: right;
-    background: #76a9ec;
-    padding: 0.2rem 1rem 0.2rem 1rem;
-    border-radius: 5px;
-    border-top: 1px solid gainsboro;
-    font-size: 0.75rem;
+    height: 0;
+    padding: 0 4px 2px 4px;
 }
-#statisticLabel:hover{
+
+#statisticLabel>div{
+    height: 1em;
+    display: inline-block;
+    border-bottom: 1px solid gainsboro;
+}
+
+#statisticLabel>.leftDiv{
+    width: 4em;
+}
+#statisticLabel>.rightDiv{
+    width: 2em;
+}
+#statisticLabel>.centerDiv{
+    width: 4em;
+    height: calc(1em - 5px);
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    text-align: center;
+    font-size: 0.6em;
+    border-radius: 5px 5px 0 0;
+    border-top: 1px solid gainsboro;
+    border-bottom: 0;
+    background: rgba(200,200,200,0.3);
+    margin-left: -6px;
+    margin-right: -6px;
     cursor: pointer;
-    background: #6cacff;
+}
+
+#statisticContainer {
+    margin-top: 1em;
+    font-size: 0.9em;
+    padding: 1rem;
+    border: 1px solid gainsboro;
+    border-top: 0;
+    border-radius: 5px;
+    background-color: rgba(200,200,200,0.3);
 }
 
 .bulletpoint {
