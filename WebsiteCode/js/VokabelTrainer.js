@@ -101,6 +101,10 @@ function falscheAntwort(arrayOfErrorElements){
     arrayOfErrorElements.forEach(element => $(element).addClass('shaking'));
     window.setTimeout(function(){
         $('.shaking').removeClass('shaking');
+
+        let opacity = parseFloat($('.tip').css('opacity'));
+        $('.tip').css('opacity', opacity < 1 ? opacity + 0.1 : 1);
+
         window.enterPressed_RunningLogic = false;
     }, 1000);
 
@@ -154,7 +158,14 @@ function setRandomVocabulary(){
     document.getElementById("deutsch").style.height = "";
     document.getElementById("deutsch").style.display = "inline-block";
 
-    getDeutschElement().innerText = vokabeln[randomZahl];
+    let meineVokabel = vokabeln[randomZahl];
+    let english = window.config.vokabelListe.modified[meineVokabel];
+    getDeutschElement().innerText = meineVokabel;
+
+    $('.tip').css('opacity', 0);
+    $('.tip.grundform').text(english.grundform);
+    $('.tip.simplepast').text(english.simplepast);
+
     window.enterPressed_RunningLogic = false;
 }
 

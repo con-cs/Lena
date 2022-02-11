@@ -21,7 +21,6 @@ body {
     body {
         margin: 1em;
         font-size: 1em;
-        overflow: hidden;
     }
 
     #okButton {
@@ -44,6 +43,7 @@ body {
     body {
         margin: 1em;
         font-size: 1.5em;
+        overflow: hidden;
     }
 }
 
@@ -131,6 +131,15 @@ img {
     margin-bottom: 1em;
 }
 
+.tip{
+    width: calc(100% - 2em);
+    text-align: right;
+    margin: 0 1em;
+    opacity: 0;
+    cursor: default;
+    font-size: 0.7em;
+}
+
 #okButton {
     color: black;
     width: 6em;
@@ -205,7 +214,7 @@ img {
 }
 
 #statisticLabel{
-    margin: -2em 3em 0 3em;
+    margin: -2em 3em 0 10em;
     float: right;
     background: #76a9ec;
     padding: 0.2rem 1rem 0.2rem 1rem;
