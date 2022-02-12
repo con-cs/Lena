@@ -46,6 +46,9 @@ body {
         font-size: 1.5em;
         overflow: hidden;
     }
+    .containerBottom{
+        font-size: 1em;
+    }
 }
 
  /* Large devices (desktops, 992px and up) */
