@@ -8,6 +8,7 @@ body {
 .containerBottom{
     float: right;
     margin-top: -2em;
+    font-size: 0.7em;
 }
 
 .progress {
