@@ -127,20 +127,22 @@ input, #deutsch, #to{
     margin-bottom: -0.5em;
 }
 
-img {
+#star1{ bottom:  5%; left: 25%; transform: rotateZ(14deg);}
+#star2{ bottom: 13%; left: 33%; transform: rotateZ(43deg);}
+#star3{ bottom: 20%; left: 40%; transform: rotateZ(18deg);}
+#star4{ bottom: 17%; left: 55%; transform: rotateZ(26deg);}
+#star5{ bottom: 10%; left: 80%; transform: rotateZ(17deg);}
+#star6{ bottom: 50%; left: 85%; transform: rotateZ(0deg);}
+#star7{ bottom: 70%; left: 79%; transform: rotateZ(43deg);}
+#star8{ bottom: 85%; left: 71%; transform: rotateZ(98deg);}
+.star{
+    font-size: 0.5em;
     height: 6em;
     width: 6em;
     position: absolute;
     filter: invert(100%);  /*drop-shadow(8px 9px 4px black);*/
     z-index: -1;
 }
-
-#star1{ top: 22em; left:   2em; transform: rotateZ(14deg);}
-#star2{ top: 28em; right: 24em; transform: rotateZ(43deg);}
-#star3{ top: 16em; right: 35em; transform: rotateZ(18deg);}
-#star4{ top: 17em; right: 18em; transform: rotateZ(26deg);}
-#star5{ top: 33em; right:  8em; transform: rotateZ(17deg);}
-#star6{ top: 26em; right:  10%; transform: rotateZ(0deg);}
 
 #container_inner{
     width: fit-content;
