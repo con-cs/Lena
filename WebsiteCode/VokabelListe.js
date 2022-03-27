@@ -1,6 +1,5 @@
 function getVokabeln(){
     let vokabeln = {
-
         //A,B,C,...
         sein: {grundform: "be", simplepast: "was, were"},
         werden: {grundform: "become", simplepast: "became"},
@@ -30,7 +29,7 @@ function getVokabeln(){
         vergessen: {grundform: "forget", simplepast: "forgot"},
         "bekommen; werden; gelangen, (hin)kommen": {grundform: "get", simplepast: "got"},
         geben: {grundform: "give", simplepast: "gave"},
-        gehen: {grundform: "go", simplepast: "went"},
+        gehen: {grundform: "go", simplepast: "went", perfect: "gone"},
         "anbauen, anpflanzen": {grundform: "grow", simplepast: "grew"},
         hängen: {grundform: "hang", simplepast: "hung"},
         haben: {grundform: "have", simplepast: "had"},
@@ -75,7 +74,7 @@ function getVokabeln(){
         "tragen (Kleidung)": {grundform: "wear", simplepast: "wore"},
         gewinnen: {grundform: "win", simplepast: "won"},
         schreiben: {grundform: "write", simplepast: "wrote"},
-        // : {grundform: "", simplepast: ""},
+        // : {grundform: "", simplepast: "", perfect: ""},
     };
 
     return vokabeln;
