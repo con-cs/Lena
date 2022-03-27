@@ -5,6 +5,18 @@ body {
     font-size: 1em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+label{
+    width: 5em;
+    display: inline-block;
+}
+
+#simplePast, #perfect{
+    width: 13em;
+}
+#grundform{
+    width: 12em;
+}
+
 .containerBottom{
     float: right;
     margin-top: -2em;
