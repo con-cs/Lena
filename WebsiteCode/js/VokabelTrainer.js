@@ -58,7 +58,7 @@ function check(){
     let lösung = window.config.vokabelListe.original[deutsch];
     console.log(lösung);
 
-    if (grundform == lösung.grundform.trim() && simplePast == lösung.simplepast.trim() && perfect == lösung.perfect.trim()) {
+    if (grundform == lösung.grundform.trim() && simplePast == lösung.simplepast.trim() && perfect == lösung.perfect?.trim()) {
         richtigeAntwort(deutsch);
     } else {
         let error = [];
