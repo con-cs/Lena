@@ -19,6 +19,10 @@ function getSimplePastElement(){
     return document.getElementById("simplePast");
 }
 
+function getPerfectElement(){
+    return document.getElementById("perfect");
+}
+
 function getCounterElements(){
     return {
         verbraucht: document.getElementById("verbraucht"),
@@ -34,6 +38,7 @@ function check(){
     let deutsch = getDeutschElement().innerText.trim();
     let grundform = getGrundformElement().value.trim();
     let simplePast = getSimplePastElement().value.trim();
+    let perfect = getPerfectElement().value.trim();
 
     if ($('#okButton').hasClass('reloadButton')){
         window.location.reload();
@@ -48,16 +53,18 @@ function check(){
     console.log(deutsch);
     console.log(grundform);
     console.log(simplePast);
+    console.log(perfect);
 
     let lösung = window.config.vokabelListe.original[deutsch];
     console.log(lösung);
 
-    if (grundform == lösung.grundform.trim() & simplePast == lösung.simplepast.trim()) {
+    if (grundform == lösung.grundform.trim() && simplePast == lösung.simplepast.trim() && perfect == lösung.perfect.trim()) {
         richtigeAntwort(deutsch);
     } else {
         let error = [];
         if (grundform != lösung.grundform) error.push(getGrundformElement());
         if (simplePast != lösung.simplepast) error.push(getSimplePastElement());
+        if (perfect != lösung.perfect) error.push(getPerfectElement());
 
         falscheAntwort(error);
     }
