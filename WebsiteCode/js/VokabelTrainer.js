@@ -132,9 +132,15 @@ function allDone(){
     $('#okButton').addClass('restartButton');
 }
 
-function thisIsTheEnd(){
+function clearInputs(){
     getGrundformElement().value = "";
     getSimplePastElement().value = "";
+    getPerfectElement().value = "";
+}
+
+function thisIsTheEnd(){
+    getGrundformElement().value = "";
+    clearInputs();
 
     aLastSalutOfConfetti();
     playSound_geschafft();
@@ -145,8 +151,7 @@ function thisIsTheEnd(){
 
 //#region SETTER
 function housekeeping(){
-    getSimplePastElement().value = "";
-    getGrundformElement().value = "";
+    clearInputs();
 
     document.getElementById("auswertungContainer").className = "rainbow";
 
@@ -172,6 +177,7 @@ function setRandomVocabulary(){
     $('.tip').css('opacity', 0);
     $('.tip.grundform').text(english.grundform);
     $('.tip.simplepast').text(english.simplepast);
+    $('.tip.perfect').text(english.perfect);
 
     window.enterPressed_RunningLogic = false;
 }
@@ -207,6 +213,9 @@ function inputKeyEnter(){
 
     let textInSimplePast = checkTextInElement( getSimplePastElement() );
     if (!textInSimplePast) return;
+
+    let textInPerfect = checkTextInElement( getPerfectElement() );
+    if (!textInPerfect) return;
 
     check();
 }
